@@ -1,0 +1,31 @@
+{
+    "name": "Starter app",
+    "userInterface": {
+        "pageTitle": "Cool application",
+        "theme": {
+            "primaryColor": "indigo",
+            "accentColor": "pink"
+        }
+    },
+    "paths": {
+        "migrations": "base:database/migrations/",
+        "models": "app:Models/",
+        "repositories": "app:Libraries/Repositories/",
+        "controllers": "app:Http/Controllers/",
+        "views": "base:resources/views/",
+        "assets": "base:public/",
+        "routes": "app:Http/routes.php"
+    },
+    "namespaces": {
+        "models": "App\\Models",
+        "repositories": "App\\Libraries\\Repositories",
+        "controllers": "App\\Http\\Controllers"
+    },
+    "inheritance": {
+        "controller": "Scaffolder\\Controller\\AppBaseController",
+        "model": "Illuminate\\Database\\Eloquent\\Model"
+    },
+    "routing": {
+        "prefix": "scaffolder"
+    }
+}

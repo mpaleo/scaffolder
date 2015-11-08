@@ -1,0 +1,38 @@
+{
+    "name": "mpaleo/scaffolder",
+    "description": "Laravel scaffolder",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "model",
+        "migration",
+        "seed",
+        "crud",
+        "scaffold",
+        "generator"
+    ],
+    "authors": [
+        {
+            "name": "Michael Paleo",
+            "email": "me@michaelpaleo.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "~3.0",
+        "laravelcollective/html": "5.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Scaffolder\\": "src/Scaffolder/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/PackageTestCase.php"
+        ]
+    }
+}

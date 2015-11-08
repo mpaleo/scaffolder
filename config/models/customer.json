@@ -1,0 +1,34 @@
+{
+    "modelLabel": "",
+    "tableName": "",
+    "skipMigration": false,
+    "skipModel": false,
+    "skipController": false,
+    "skipViews": false,
+    "fields": [
+        {
+            "name": "name",
+            "validations": "required",
+            "type": {
+                "db": "string",
+                "ui": "text"
+            },
+            "modifiers": "",
+            "foreignKey": "",
+            "index": "none",
+            "hideInListings": false
+        },
+        {
+            "name": "surname",
+            "validations": "",
+            "type": {
+                "db": "string",
+                "ui": "text"
+            },
+            "modifiers": "",
+            "foreignKey": "",
+            "index": "none",
+            "hideInListings": false
+        }
+    ]
+}
