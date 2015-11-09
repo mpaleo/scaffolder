@@ -341,41 +341,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="divider"></div>
-
-                        {{-- Security --}}
-                        <div id="security-section" class="section scrollspy">
-                            <h5>Security</h5>
-
-                            <div class="row">
-                                <div class="input-field col m6 s12">
-                                    <input type="checkbox" id="authenticationSecurity"
-                                           name="security[authentication]"/>
-                                    <label for="authenticationSecurity">Authentication</label>
-                                </div>
-
-                                <div class="input-field col m6 s12">
-                                    <input type="checkbox" id="authorizationSecurity"
-                                           name="security[authorization]"/>
-                                    <label for="authorizationSecurity">Authorization</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        {{-- Frontend --}}
-                        <div id="frontend-section" class="section scrollspy">
-                            <h5>Frontend</h5>
-
-                            <div class="row">
-                                <div class="input-field col m6 s12">
-                                    <input type="checkbox" id="generateFrontend" name="frontend[generate]"/>
-                                    <label for="generateFrontend">Generate</label>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -710,8 +675,6 @@
             <li><a href="#namespaces-section">Namespaces</a></li>
             <li><a href="#inheritances-section">Inheritances</a></li>
             <li><a href="#routing-section">Routing</a></li>
-            <li><a href="#security-section">Security</a></li>
-            <li><a href="#frontend-section">Frontend</a></li>
             <li><a href="#model-generation-section">Model generation</a></li>
         </ul>
     </asside>
