@@ -82,6 +82,9 @@ class GeneratorCommand extends Command
         $editViewStub = File::get($this->themeViews->getEditPath());
         $routeStub = File::get($this->stubsDirectory . 'ResourceRoute.php');
 
+        // Create models directory
+        Directory::createIfNotExists(app_path('Models'));
+
         // Iterate over model files
         foreach ($modelFiles as $modelFile)
         {

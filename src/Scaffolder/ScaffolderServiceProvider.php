@@ -9,13 +9,6 @@ use Scaffolder\Commands\GeneratorCommand;
 class ScaffolderServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Bootstrap the application services.
      */
     public function boot()
