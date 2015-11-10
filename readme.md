@@ -43,6 +43,8 @@ First you need to publish the configuration files and assets
 ./artisan vendor:publish --provider="ScaffolderTheme\ScaffolderThemeServiceProvider" --force
 ```
 
+Here we are using the theme [mPaleo/scaffolder-theme-material](https://github.com/mPaleo/scaffolder-theme-material), but you can fork it, and do whatever you want/need :)
+
 At this point, you already can start to scaffold things. You have two ways to use the package.
 
 ##### Command line way (Hardcore devs)
