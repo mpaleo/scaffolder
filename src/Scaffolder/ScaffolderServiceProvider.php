@@ -40,7 +40,7 @@ class ScaffolderServiceProvider extends ServiceProvider
             return new GeneratorCommand($app['scaffolder.theme.views'], $app['scaffolder.theme.layouts']);
         });
 
-        $this->app->singleton('scaffolder.command.cache.clear', function ($app)
+        $this->app->singleton('scaffolder.command.cache.clear', function ()
         {
             return new ClearCacheCommand();
         });
