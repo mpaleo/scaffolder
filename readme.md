@@ -73,6 +73,9 @@ For instance, when you update the package, you should clear the cache files stor
 ##### User interface way (Lazy devs)
 All you need to do, is go to your `http://{crazyhost}/scaffolder/generator` and fill some inputs :)
 
+##### Next steps
+Check out the [Wiki](https://github.com/mPaleo/scaffolder/wiki) to get more information about things that you need to know
+
 ## Contributing
 Just let me know your ideas and let's work together
 
