@@ -26,14 +26,14 @@
 
                     {{-- Model label --}}
                     <div class="input-field col m4 s12">
-                        <input id="modelName-{{ $modelId }}" name="models[{{ $modelId }}][modelLabel]" type="text"
+                        <input id="modelLabel-{{ $modelId }}" name="models[{{ $modelId }}][modelLabel]" type="text"
                                class="validate">
                         <label for="modelLabel-{{ $modelId }}">Model label</label>
                     </div>
 
                     {{-- Table name --}}
                     <div class="input-field col m4 s12">
-                        <input id="modelName-{{ $modelId }}" name="models[{{ $modelId }}][tableName]" type="text"
+                        <input id="tableName-{{ $modelId }}" name="models[{{ $modelId }}][tableName]" type="text"
                                class="validate">
                         <label for="tableName-{{ $modelId }}">Table name</label>
                     </div>

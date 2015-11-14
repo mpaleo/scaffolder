@@ -387,14 +387,14 @@
 
                                             {{-- Model label --}}
                                             <div class="input-field col m4 s12">
-                                                <input id="modelName-0" name="models[0][modelLabel]" type="text"
+                                                <input id="modelLabel-0" name="models[0][modelLabel]" type="text"
                                                        class="validate">
                                                 <label for="modelLabel-0">Model label</label>
                                             </div>
 
                                             {{-- Table name --}}
                                             <div class="input-field col m4 s12">
-                                                <input id="modelName-0" name="models[0][tableName]" type="text"
+                                                <input id="tableName-0" name="models[0][tableName]" type="text"
                                                        class="validate">
                                                 <label for="tableName-0">Table name</label>
                                             </div>
