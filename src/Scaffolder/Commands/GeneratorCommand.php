@@ -35,7 +35,7 @@ class GeneratorCommand extends Command
 
         $this->themeViews = $themeViews;
         $this->themeLayouts = $themeLayouts;
-        $this->stubsDirectory = __DIR__ . '/../../../stubs/'
+        $this->stubsDirectory = __DIR__ . '/../../../stubs/';
     }
 
     /**
