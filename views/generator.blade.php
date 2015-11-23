@@ -155,9 +155,9 @@
         <div class="nav-wrapper teal darken-2">
             <a href="#" class="brand-logo">Laravel scaffolder</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="waves-effect" href="#">GitHub</a></li>
-                <li><a class="waves-effect" href="#">Wiki</a></li>
-                <li><a class="waves-effect" href="#">Help</a></li>
+                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder" target="_blank">GitHub</a></li>
+                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/wiki" target="_blank">Wiki</a></li>
+                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/issues" target="_blank">Help</a></li>
             </ul>
         </div>
     </nav>
