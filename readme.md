@@ -58,7 +58,7 @@ When you execute the artisan publish command, the service provider creates the f
 -- cache
 ```
 
-app.json contains the scaffolder global configuration and models contains the models files. All you need to scaffold an application is to edit the `app.json` file, and create the json files for the models you want. After you have all the files ready, you have the following commands:
+The app.json file contains global settings, also you will get some demo files for models. All you need to scaffold an application is to edit the `app.json` file, and create the json files for the models you want. After you have all the files ready, you have the following commands:
 
 This command generate the application using the files that you have provided.
 ```bash
