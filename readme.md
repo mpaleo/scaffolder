@@ -8,7 +8,8 @@ Remove the headache of creating over and over again the base code for most of yo
 You are free to extend it the way you need. This package only generate things that you need to start, always keeping the code clean and abstract. Are you hungry ? Fork it !
 
 ## Installation
-1. Add the following packages to your composer.json
+1. Get [laravel](http://laravel.com/docs/5.1#installation) up and running
+2. Add the following packages to your composer.json
 
     ```json
     "laravelcollective/html": "5.1.*",
@@ -16,19 +17,19 @@ You are free to extend it the way you need. This package only generate things th
     "mpaleo/scaffolder-theme-material": "dev-master",
     "mpaleo/scaffolder": "dev-master",
     ```
-2. Update your packages
+3. Update your packages
 
     ```bash
     composer update
     ````
-3. Add the service providers to the providers array in `{laravel-root}\config\app.php`
+4. Add the service providers to the providers array in `{laravel-root}\config\app.php`
 
     ```php
     ScaffolderTheme\ScaffolderThemeServiceProvider::class,
     Scaffolder\ScaffolderServiceProvider::class,
     yajra\Datatables\DatatablesServiceProvider::class,
     ```
-4. Add the following aliases
+5. Add the following aliases in `{laravel-root}\config\app.php`
 
     ```php
     'Form'       => Collective\Html\FormFacade::class,
@@ -58,7 +59,7 @@ When you execute the artisan publish command, the service provider creates the f
 -- cache
 ```
 
-The app.json file contains global settings, also you will get some demo files for models. All you need to scaffold an application is to edit the `app.json` file, and create the json files for the models you want. After you have all the files ready, you have the following commands:
+The `app.json` file contains global settings, also you will get some demo files for models. All you need to scaffold an application is to edit the `app.json` file, and create the json files for the models you want. After you have all the files ready, you have the following commands:
 
 This command generate the application using the files that you have provided.
 ```bash
@@ -74,7 +75,7 @@ For instance, when you update the package, you should clear the cache files stor
 All you need to do, is go to your `http://{crazyhost}/scaffolder/generator` and fill some inputs :)
 
 ##### Next steps
-Check out the [Wiki](https://github.com/mPaleo/scaffolder/wiki) to get more information about things that you need to know
+Check out the [wiki](https://github.com/mPaleo/scaffolder/wiki) to get more information about things that you need to know
 
 ## Contributing
 Just let me know your ideas and let's work together
