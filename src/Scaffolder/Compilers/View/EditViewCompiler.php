@@ -87,12 +87,12 @@ class EditViewCompiler extends AbstractViewCompiler
         {
             if ($firstIteration)
             {
-                $fields .= sprintf(self::getInputFor($field) . PHP_EOL, $field->name);
+                $fields .= self::getInputFor($field) . PHP_EOL;
                 $firstIteration = false;
             }
             else
             {
-                $fields .= sprintf("\t" . self::getInputFor($field) . PHP_EOL, $field->name);
+                $fields .= "\t" . self::getInputFor($field) . PHP_EOL;
             }
         }
 

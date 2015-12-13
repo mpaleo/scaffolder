@@ -54,8 +54,10 @@ trait InputTypeResolverTrait
 
             foreach ($formData as $value)
             {
-                $radioGroup .= '{!! Form::radio(\'' . $fieldData->name . '\', \'' . $value . '\', (isset($model) && $model->' . $fieldData->name . ' == \'' . $value . '\') ? true : false, [\'id\' => ' . $radioId . ']) !!}' . PHP_EOL;
+                $radioGroup .= '{!! Form::radio(\'' . $fieldData->name . '\', \'' . $value . '\', (isset($model) && $model->' . $fieldData->name . ' == \'' . $value . '\') ? true : false, [\'id\' => ' . $radioId . ']) !!}';
                 $radioId++;
+
+                if (end($formData) != $value) $radioGroup .= PHP_EOL . "\t";
             }
 
             return $radioGroup;
