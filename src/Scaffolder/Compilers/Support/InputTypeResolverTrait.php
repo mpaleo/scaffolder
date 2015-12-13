@@ -10,16 +10,59 @@ trait InputTypeResolverTrait
      * @param $fieldData
      *
      * @return string
+     * @throws
      */
     public static function getInputFor($fieldData)
     {
-        if ($fieldData->type->ui == 'text')
+        $formData = explode(':', $fieldData->type->ui);
+        $type = $formData[0];
+        $options = isset($formData[1]) ? $formData[1] : '[]';
+
+        if ($type == 'text' ||
+            $type == 'number' ||
+            $type == 'textarea'
+        )
         {
-            return '{!! Form::text(\'%s\', (isset($model)) ? $model->' . $fieldData->name . ' : null) !!}';
+            return '{!! Form::' . $type . '(\'' . $fieldData->name . '\', (isset($model)) ? $model->' . $fieldData->name . ' : null, ' . $options . ') !!}';
         }
-        elseif ($fieldData->type->ui == 'textarea')
+        elseif ($type == 'select')
         {
-            return '{!! Form::textarea(\'%s\', (isset($model)) ? $model->' . $fieldData->name . ' : null) !!}';
+            $list = isset($formData[1]) ? $formData[1] : '[]';
+            $options = isset($formData[2]) ? $formData[2] : '[]';
+
+            return '{!! Form::select(\'' . $fieldData->name . '\', ' . $list . ', (isset($model)) ? $model->' . $fieldData->name . ' : null, ' . $options . ') !!}';
+        }
+        elseif ($type == 'selectRange')
+        {
+            $begin = isset($formData[1]) ? $formData[1] : '0';
+            $end = isset($formData[2]) ? $formData[2] : '0';
+            $options = isset($formData[3]) ? $formData[3] : '[]';
+
+            return '{!! Form::selectRange(\'' . $fieldData->name . '\', ' . $begin . ', ' . $end . ', (isset($model)) ? $model->' . $fieldData->name . ' : null, ' . $options . ') !!}';
+        }
+        elseif ($type == 'checkbox')
+        {
+            $options = isset($formData[1]) ? $formData[1] : 'false';
+
+            return '{!! Form::checkbox(\'' . $fieldData->name . '\', 1, (isset($model) && $model->' . $fieldData->name . ' == 1) ? true : false, ' . $options . ') !!}';
+        }
+        elseif ($type == 'radio')
+        {
+            array_shift($formData);
+            $radioGroup = '';
+            $radioId = 0;
+
+            foreach ($formData as $value)
+            {
+                $radioGroup .= '{!! Form::radio(\'' . $fieldData->name . '\', \'' . $value . '\', (isset($model) && $model->' . $fieldData->name . ' == \'' . $value . '\') ? true : false, [\'id\' => ' . $radioId . ']) !!}' . PHP_EOL;
+                $radioId++;
+            }
+
+            return $radioGroup;
+        }
+        else
+        {
+            throw \Exception('Input type not implemented');
         }
     }
 }
