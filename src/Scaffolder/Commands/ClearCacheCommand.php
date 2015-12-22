@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\File;
 
 class ClearCacheCommand extends Command
 {
-    protected $signature = 'mpaleo.scaffolder:cache:clear';
+    protected $signature = 'scaffolder:cache-clear';
 
-    protected $description = 'Delete the compiled files';
+    protected $description = 'Delete compiled files';
 
     /**
      * Execute the command.

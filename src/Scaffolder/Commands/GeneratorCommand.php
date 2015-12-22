@@ -19,7 +19,7 @@ use Scaffolder\Themes\IScaffolderThemeViews;
 
 class GeneratorCommand extends Command
 {
-    protected $signature = 'mpaleo.scaffolder:generate';
+    protected $signature = 'scaffolder:generate';
 
     protected $description = 'Scaffold an application';
 
