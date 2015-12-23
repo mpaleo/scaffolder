@@ -65,12 +65,12 @@ The `app.json` file contains global settings, also you will get some demo files 
 
 This command generate the application using the files that you have provided.
 ```bash
-./artisan mpaleo.scaffolder:generate
+./artisan scaffolder:generate
 ```
 
 For instance, when you update the package, you should clear the cache files stored in `{laravel-root}\scaffolder-config\cache`
 ```bash
-./artisan mpaleo.scaffolder:cache:clear
+./artisan scaffolder:cache-clear
 ```
 
 ##### User interface way (Lazy devs)
