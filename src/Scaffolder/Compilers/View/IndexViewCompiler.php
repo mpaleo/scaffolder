@@ -83,7 +83,7 @@ class IndexViewCompiler extends AbstractViewCompiler
 
         foreach ($modelData->fields as $field)
         {
-            if ($field->hideInListings == false)
+            if ($field->hideInListings === false)
             {
                 if ($firstIteration)
                 {
@@ -117,7 +117,7 @@ class IndexViewCompiler extends AbstractViewCompiler
 
         foreach ($modelData->fields as $field)
         {
-            if ($field->hideInListings == false)
+            if ($field->hideInListings === false)
             {
                 if ($firstIteration)
                 {

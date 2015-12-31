@@ -2,7 +2,7 @@
 
 namespace Scaffolder\Themes;
 
-interface IScaffolderThemeViews
+interface ScaffolderThemeViewsInterface
 {
     /**
      * Get the 'create view' path.

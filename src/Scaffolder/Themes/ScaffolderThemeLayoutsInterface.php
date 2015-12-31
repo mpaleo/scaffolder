@@ -2,7 +2,7 @@
 
 namespace Scaffolder\Themes;
 
-interface IScaffolderThemeLayouts
+interface ScaffolderThemeLayoutsInterface
 {
     /**
      * Get the 'create layout' path.

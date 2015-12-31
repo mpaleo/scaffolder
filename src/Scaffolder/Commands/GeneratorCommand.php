@@ -14,8 +14,8 @@ use Scaffolder\Compilers\View\IndexViewCompiler;
 use Scaffolder\Compilers\View\PageLayoutCompiler;
 use Scaffolder\Support\Directory;
 use Scaffolder\Support\Json;
-use Scaffolder\Themes\IScaffolderThemeLayouts;
-use Scaffolder\Themes\IScaffolderThemeViews;
+use Scaffolder\Themes\ScaffolderThemeLayoutsInterface;
+use Scaffolder\Themes\ScaffolderThemeViewsInterface;
 
 class GeneratorCommand extends Command
 {
@@ -39,23 +39,24 @@ class GeneratorCommand extends Command
 
     /**
      * Theme views implementation.
-     * @var \Scaffolder\Themes\IScaffolderThemeViews
+     * @var \Scaffolder\Themes\ScaffolderThemeViewsInterface
      */
     protected $themeViews;
 
     /**
      * Theme layouts implementation.
-     * @var \Scaffolder\Themes\IScaffolderThemeLayouts
+     * @var \Scaffolder\Themes\ScaffolderThemeLayoutsInterface
      */
     protected $themeLayouts;
 
     /**
      * Create a new generator command instance.
-     *
-     * @param \Scaffolder\Themes\IScaffolderThemeViews $themeViews
-     * @param \Scaffolder\Themes\IScaffolderThemeLayouts $themeLayouts
+
+*
+*@param \Scaffolder\Themes\ScaffolderThemeViewsInterface $themeViews
+     * @param \Scaffolder\Themes\ScaffolderThemeLayoutsInterface $themeLayouts
      */
-    public function __construct(IScaffolderThemeViews $themeViews, IScaffolderThemeLayouts $themeLayouts)
+    public function __construct(ScaffolderThemeViewsInterface $themeViews, ScaffolderThemeLayoutsInterface $themeLayouts)
     {
         parent::__construct();
 
