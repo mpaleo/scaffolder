@@ -32,7 +32,7 @@ class IndexViewCompiler extends AbstractViewCompiler
             $this->stub = $stub;
 
             return $this->replaceClassName($modelName)
-                ->replaceBreadcrumb($modelName)
+                ->replaceBreadcrumb($modelName, $modelData->modelLabel)
                 ->addDatatableFields($modelName, $modelData)
                 ->setTableHeaders($modelData)
                 ->replaceRoutePrefix($scaffolderConfig->routing->prefix)

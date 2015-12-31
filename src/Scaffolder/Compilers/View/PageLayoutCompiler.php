@@ -96,9 +96,9 @@ class PageLayoutCompiler extends AbstractViewCompiler
             $navLinks .= sprintf("
             <li>
                 <a href='/%s' class='waves-effect'>
-                    %ss
+                    %s
                 </a>
-            </li>", $scaffolderConfig->routing->prefix . '/' . strtolower($link), $link);
+            </li>", $scaffolderConfig->routing->prefix . '/' . strtolower($link['modelName']), $link['modelLabel']);
         }
 
         $this->stub = str_replace('{{links}}', $navLinks, $this->stub);

@@ -110,7 +110,7 @@ class GeneratorCommand extends Command
             $compiledRoutes .= $routeCompiler->compile($routeStub, $modelName, $modelData, $scaffolderConfig, null);
 
             // Add entity link
-            array_push($sidenavLinks, $modelName);
+            array_push($sidenavLinks, ['modelName' => $modelName, 'modelLabel' => $modelData->modelLabel]);
 
             // Advance progress
             $this->output->progressAdvance();

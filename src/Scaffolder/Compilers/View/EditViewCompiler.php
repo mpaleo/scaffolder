@@ -35,7 +35,7 @@ class EditViewCompiler extends AbstractViewCompiler
             $this->stub = $stub;
 
             return $this->replaceClassName($modelName)
-                ->replaceBreadcrumb($modelName)
+                ->replaceBreadcrumb($modelName, $modelData->modelLabel)
                 ->addFields($modelData)
                 ->replacePrimaryKey($modelData)
                 ->replaceRoutePrefix($scaffolderConfig->routing->prefix)
@@ -119,6 +119,8 @@ class EditViewCompiler extends AbstractViewCompiler
      * Replace the primary key.
      *
      * @param $modelData
+     *
+     * @return $this
      */
     private function replacePrimaryKey($modelData)
     {

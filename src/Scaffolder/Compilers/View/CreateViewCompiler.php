@@ -35,7 +35,7 @@ class CreateViewCompiler extends AbstractViewCompiler
             $this->stub = $stub;
 
             return $this->replaceClassName($modelName)
-                ->replaceBreadcrumb($modelName)
+                ->replaceBreadcrumb($modelName, $modelData->modelLabel)
                 ->addFields($modelData)
                 ->replaceRoutePrefix($scaffolderConfig->routing->prefix)
                 ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
