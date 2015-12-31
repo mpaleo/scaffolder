@@ -12,11 +12,11 @@ class PageLayoutCompiler extends AbstractViewCompiler
     /**
      * Compiles the page layout.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
      * @return string
@@ -35,10 +35,10 @@ class PageLayoutCompiler extends AbstractViewCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

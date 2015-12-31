@@ -10,8 +10,15 @@ use Scaffolder\Compilers\Support\PathParser;
 
 class MigrationCompiler extends AbstractCompiler
 {
+    /**
+     * Migration date
+     * @var static
+     */
     private $date;
 
+    /**
+     * Create a new migration compiler instance.
+     */
     public function __construct()
     {
         $this->date = Carbon::now();
@@ -20,14 +27,14 @@ class MigrationCompiler extends AbstractCompiler
     /**
      * Compiles a migration.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
-     * @return mixed|void
+     * @return string
      */
     public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
     {
@@ -52,10 +59,10 @@ class MigrationCompiler extends AbstractCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

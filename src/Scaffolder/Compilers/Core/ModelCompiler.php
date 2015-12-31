@@ -12,11 +12,11 @@ class ModelCompiler extends AbstractCompiler
     /**
      * Compiles a model.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
      * @return string
@@ -43,10 +43,10 @@ class ModelCompiler extends AbstractCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */
@@ -116,6 +116,8 @@ class ModelCompiler extends AbstractCompiler
      * Set the primary key.
      *
      * @param $modelData
+     *
+     * @return $this
      */
     private function setPrimaryKey($modelData)
     {

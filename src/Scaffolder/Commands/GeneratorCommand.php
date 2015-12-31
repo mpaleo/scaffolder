@@ -19,16 +19,42 @@ use Scaffolder\Themes\IScaffolderThemeViews;
 
 class GeneratorCommand extends Command
 {
+    /**
+     * Command signature.
+     * @var string
+     */
     protected $signature = 'scaffolder:generate';
 
+    /**
+     * Command description.
+     * @var string
+     */
     protected $description = 'Scaffold an application';
 
+    /**
+     * Stubs directory.
+     * @var string
+     */
     protected $stubsDirectory;
 
+    /**
+     * Theme views implementation.
+     * @var \Scaffolder\Themes\IScaffolderThemeViews
+     */
     protected $themeViews;
 
+    /**
+     * Theme layouts implementation.
+     * @var \Scaffolder\Themes\IScaffolderThemeLayouts
+     */
     protected $themeLayouts;
 
+    /**
+     * Create a new generator command instance.
+     *
+     * @param \Scaffolder\Themes\IScaffolderThemeViews $themeViews
+     * @param \Scaffolder\Themes\IScaffolderThemeLayouts $themeLayouts
+     */
     public function __construct(IScaffolderThemeViews $themeViews, IScaffolderThemeLayouts $themeLayouts)
     {
         parent::__construct();

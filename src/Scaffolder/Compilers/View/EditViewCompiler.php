@@ -15,11 +15,11 @@ class EditViewCompiler extends AbstractViewCompiler
     /**
      * Compiles the edit view.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
      * @return string
@@ -46,10 +46,10 @@ class EditViewCompiler extends AbstractViewCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

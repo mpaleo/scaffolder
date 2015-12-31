@@ -12,11 +12,11 @@ class IndexViewCompiler extends AbstractViewCompiler
     /**
      * Compiles the index view.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
      * @return string
@@ -43,10 +43,10 @@ class IndexViewCompiler extends AbstractViewCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

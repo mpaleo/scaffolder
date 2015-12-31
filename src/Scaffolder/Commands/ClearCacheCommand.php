@@ -7,8 +7,16 @@ use Illuminate\Support\Facades\File;
 
 class ClearCacheCommand extends Command
 {
+    /**
+     * Command signature.
+     * @var string
+     */
     protected $signature = 'scaffolder:cache-clear';
 
+    /**
+     * Command description.
+     * @var string
+     */
     protected $description = 'Delete compiled files';
 
     /**

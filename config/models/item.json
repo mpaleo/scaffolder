@@ -1,6 +1,6 @@
 {
-    "modelLabel": "",
-    "tableName": "",
+    "modelLabel": "Items",
+    "tableName": "items",
     "skipMigration": false,
     "skipModel": false,
     "skipController": false,

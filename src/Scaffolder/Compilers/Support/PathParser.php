@@ -8,6 +8,8 @@ class PathParser
      * Parse a path.
      *
      * @param $path
+     *
+     * @return array|string
      */
     public static function parse($path)
     {

@@ -10,7 +10,7 @@ trait InputTypeResolverTrait
      * @param $fieldData
      *
      * @return string
-     * @throws
+     * @throws \Exception
      */
     public static function getInputFor($fieldData)
     {

@@ -12,14 +12,14 @@ class RouteCompiler extends AbstractCompiler
     /**
      * Compiles a route.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
-     * @return mixed|void
+     * @return mixed
      */
     public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
     {
@@ -53,10 +53,10 @@ class RouteCompiler extends AbstractCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return mixed|void
      */

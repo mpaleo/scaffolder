@@ -13,11 +13,11 @@ abstract class AbstractCompiler
     /**
      * Abstract compiler.
      *
-     * @param      $stub
-     * @param      $modelName
-     * @param      $modelData
-     * @param      $scaffolderConfig
-     * @param      $hash
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param $scaffolderConfig
+     * @param $hash
      * @param null $extra
      *
      * @return mixed
@@ -27,13 +27,12 @@ abstract class AbstractCompiler
     /**
      * Store the compiled stub.
      *
-     * @param               $modelName
-     * @param               $scaffolderConfig
-     * @param               $compiled
-     * @param FileToCompile $fileToCompile
+     * @param $modelName
+     * @param $scaffolderConfig
+     * @param $compiled
+     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return mixed
-     * @internal param $cache
      */
     abstract protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile);
 

@@ -82,5 +82,8 @@ Check out the [wiki](https://github.com/mpaleo/scaffolder/wiki) to get more info
 ## Contributing
 Just let me know your ideas and let's work together
 
+### Coding style
+It would be great if we follow the PSR-2 coding standard and the PSR-4 autoloading standard.
+
 ### License
 The scaffolder package is licensed under the [MIT license](http://opensource.org/licenses/MIT)

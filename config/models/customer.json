@@ -1,6 +1,6 @@
 {
-    "modelLabel": "",
-    "tableName": "",
+    "modelLabel": "Customers",
+    "tableName": "customers",
     "skipMigration": false,
     "skipModel": false,
     "skipController": false,
