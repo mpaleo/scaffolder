@@ -15,13 +15,13 @@ class ModelCompiler extends AbstractCompiler
      * @param $stub
      * @param $modelName
      * @param $modelData
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $hash
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/model_' . $hash . self::CACHE_EXT)))
         {
@@ -44,13 +44,13 @@ class ModelCompiler extends AbstractCompiler
      * Store the compiled stub.
      *
      * @param $modelName
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $compiled
      * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */
-    protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->models) . $modelName . '.php';
 
@@ -71,11 +71,11 @@ class ModelCompiler extends AbstractCompiler
     /**
      * Replace the namespace which the model extends
      *
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return $this
      */
-    private function replaceNamespaceModelExtend($scaffolderConfig)
+    private function replaceNamespaceModelExtend(\stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{namespace_model_extend}}', $scaffolderConfig->inheritance->model, $this->stub);
 

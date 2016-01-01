@@ -15,13 +15,13 @@ class PageLayoutCompiler extends AbstractViewCompiler
      * @param $stub
      * @param $modelName
      * @param $modelData
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $hash
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
     {
         $this->stub = $stub;
 
@@ -36,13 +36,13 @@ class PageLayoutCompiler extends AbstractViewCompiler
      * Store the compiled stub.
      *
      * @param $modelName
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $compiled
      * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */
-    protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->views) . 'layouts/page.blade.php';
 
@@ -54,11 +54,11 @@ class PageLayoutCompiler extends AbstractViewCompiler
     /**
      * Replace the page title.
      *
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return $this
      */
-    private function setPageTitle($scaffolderConfig)
+    private function setPageTitle(\stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{page_title}}', $scaffolderConfig->userInterface->pageTitle, $this->stub);
 
@@ -68,11 +68,11 @@ class PageLayoutCompiler extends AbstractViewCompiler
     /**
      * Replace the app name.
      *
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return $this
      */
-    private function setAppName($scaffolderConfig)
+    private function setAppName(\stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{app_name}}', $scaffolderConfig->name, $this->stub);
 
@@ -83,11 +83,11 @@ class PageLayoutCompiler extends AbstractViewCompiler
      * Add links to the nav.
      *
      * @param $links
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return $this
      */
-    private function setLinks($links, $scaffolderConfig)
+    private function setLinks($links, \stdClass $scaffolderConfig)
     {
         $navLinks = '';
 

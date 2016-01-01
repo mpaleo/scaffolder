@@ -16,25 +16,25 @@ abstract class AbstractCompiler
      * @param $stub
      * @param $modelName
      * @param $modelData
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $hash
      * @param null $extra
      *
      * @return mixed
      */
-    abstract public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null);
+    abstract public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null);
 
     /**
      * Store the compiled stub.
      *
      * @param $modelName
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $compiled
      * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return mixed
      */
-    abstract protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile);
+    abstract protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile);
 
     /**
      * Replace the class name.
@@ -54,11 +54,11 @@ abstract class AbstractCompiler
     /**
      * Replace the namespace.
      *
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return $this
      */
-    protected function replaceNamespace($scaffolderConfig)
+    protected function replaceNamespace(\stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{namespace}}', $scaffolderConfig->namespaces->models, $this->stub);
 

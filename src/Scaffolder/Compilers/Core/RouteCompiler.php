@@ -15,13 +15,13 @@ class RouteCompiler extends AbstractCompiler
      * @param $stub
      * @param $modelName
      * @param $modelData
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $hash
      * @param null $extra
      *
      * @return mixed
      */
-    public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
     {
         $this->stub = $stub;
 
@@ -35,11 +35,11 @@ class RouteCompiler extends AbstractCompiler
      *
      * @param $stub
      * @param $compiledRoutes
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      *
      * @return mixed
      */
-    public function compileGroup($stub, $compiledRoutes, $scaffolderConfig)
+    public function compileGroup($stub, $compiledRoutes, \stdClass $scaffolderConfig)
     {
         $this->stub = $stub;
 
@@ -54,13 +54,13 @@ class RouteCompiler extends AbstractCompiler
      * Store the compiled stub.
      *
      * @param $modelName
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $compiled
      * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return mixed|void
      */
-    protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         File::append(PathParser::parse($scaffolderConfig->paths->routes), PHP_EOL . $compiled);
     }

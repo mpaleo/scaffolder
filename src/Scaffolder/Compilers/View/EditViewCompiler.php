@@ -18,13 +18,13 @@ class EditViewCompiler extends AbstractViewCompiler
      * @param $stub
      * @param $modelName
      * @param $modelData
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $hash
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/view_edit_' . $hash . self::CACHE_EXT)))
         {
@@ -47,13 +47,13 @@ class EditViewCompiler extends AbstractViewCompiler
      * Store the compiled stub.
      *
      * @param $modelName
-     * @param $scaffolderConfig
+     * @param \stdClass $scaffolderConfig
      * @param $compiled
      * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
      *
      * @return string
      */
-    protected function store($modelName, $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->views) . strtolower($modelName) . '/edit.blade.php';
 
