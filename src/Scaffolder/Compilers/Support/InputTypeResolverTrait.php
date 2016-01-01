@@ -7,12 +7,12 @@ trait InputTypeResolverTrait
     /**
      * Get the input for the field.
      *
-     * @param $fieldData
+     * @param \stdClass $fieldData
      *
      * @return string
-     * @throws \Exception
+     * @throws
      */
-    public static function getInputFor($fieldData)
+    public static function getInputFor(\stdClass $fieldData)
     {
         $formData = explode(':', $fieldData->type->ui);
         $type = $formData[0];
