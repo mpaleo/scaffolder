@@ -51,7 +51,7 @@ Here we are using the theme [mpaleo/scaffolder-theme-material](https://github.co
 
 At this point, you already can start to scaffold things. You have two ways to use the package.
 
-##### Command line way (Hardcore devs)
+##### Command line way
 When you execute the artisan publish command, the service provider creates the folder `{laravel-root}\scaffolder-config` that has the following structure:
 
 ```
@@ -73,7 +73,7 @@ For instance, when you update the package, you should clear the cache files stor
 ./artisan scaffolder:cache-clear
 ```
 
-##### User interface way (Lazy devs)
+##### User interface way
 All you need to do, is go to your `http://{crazyhost}/scaffolder/generator` and fill some inputs :)
 
 ##### Next steps
