@@ -36,6 +36,7 @@ class ModelCompiler extends AbstractCompiler
                 ->replaceClassName($modelName)
                 ->setPrimaryKey($modelData)
                 ->addFillable($modelData)
+                ->replaceTableName($scaffolderConfig, $modelName)
                 ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
     }
@@ -108,6 +109,23 @@ class ModelCompiler extends AbstractCompiler
         }
 
         $this->stub = str_replace('{{fillable}}', $fields, $this->stub);
+
+        return $this;
+    }
+
+    /**
+     * Replace the table name.
+     *
+     * @param \stdClass $scaffolderConfig
+     * @param $modelName
+     *
+     * @return $this
+     */
+    private function replaceTableName(\stdClass $scaffolderConfig, $modelName)
+    {
+        $tableName = isset($scaffolderConfig->tableName) && !empty($scaffolderConfig->tableName) ? $scaffolderConfig->tableName : $modelName . 's';
+
+        $this->stub = str_replace('{{table_name}}', strtolower($tableName), $this->stub);
 
         return $this;
     }

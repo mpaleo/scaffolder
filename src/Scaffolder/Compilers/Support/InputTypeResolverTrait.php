@@ -10,7 +10,7 @@ trait InputTypeResolverTrait
      * @param \stdClass $fieldData
      *
      * @return string
-     * @throws
+     * @throws \Exception
      */
     public static function getInputFor(\stdClass $fieldData)
     {
@@ -64,7 +64,7 @@ trait InputTypeResolverTrait
         }
         else
         {
-            throw \Exception('Input type not implemented');
+            throw new \Exception('Input type not implemented');
         }
     }
 }

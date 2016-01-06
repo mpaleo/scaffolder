@@ -50,7 +50,7 @@ class MigrationCompiler extends AbstractCompiler
             $this->stub = $stub;
 
             return $this->replaceClassName($modelName)
-                ->replaceTableName($modelName)
+                ->replaceTableName($scaffolderConfig, $modelName)
                 ->addFields($modelData)
                 ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
@@ -87,13 +87,16 @@ class MigrationCompiler extends AbstractCompiler
     /**
      * Replace the table name.
      *
+     * @param \stdClass $scaffolderConfig
      * @param $modelName
      *
      * @return $this
      */
-    private function replaceTableName($modelName)
+    private function replaceTableName(\stdClass $scaffolderConfig, $modelName)
     {
-        $this->stub = str_replace('{{table_name}}', strtolower($modelName), $this->stub);
+        $tableName = isset($scaffolderConfig->tableName) && !empty($scaffolderConfig->tableName) ? $scaffolderConfig->tableName : $modelName . 's';
+
+        $this->stub = str_replace('{{table_name}}', strtolower($tableName), $this->stub);
 
         return $this;
     }

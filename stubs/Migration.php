@@ -10,7 +10,7 @@ class Create{{class_name}}sTable extends Migration
      */
     public function up()
     {
-        Schema::create('{{table_name}}s', function (Blueprint $table) {
+        Schema::create('{{table_name}}', function (Blueprint $table) {
 
 {{fields}}
         });
@@ -21,6 +21,6 @@ class Create{{class_name}}sTable extends Migration
      */
     public function down()
     {
-        Schema::drop('{{table_name}}s');
+        Schema::drop('{{table_name}}');
     }
 }
