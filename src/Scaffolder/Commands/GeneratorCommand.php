@@ -51,9 +51,8 @@ class GeneratorCommand extends Command
 
     /**
      * Create a new generator command instance.
-
-*
-*@param \Scaffolder\Themes\ScaffolderThemeViewsInterface $themeViews
+     *
+     * @param \Scaffolder\Themes\ScaffolderThemeViewsInterface $themeViews
      * @param \Scaffolder\Themes\ScaffolderThemeLayoutsInterface $themeLayouts
      */
     public function __construct(ScaffolderThemeViewsInterface $themeViews, ScaffolderThemeLayoutsInterface $themeLayouts)
