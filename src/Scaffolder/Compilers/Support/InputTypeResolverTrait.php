@@ -20,7 +20,8 @@ trait InputTypeResolverTrait
 
         if ($type == 'text' ||
             $type == 'number' ||
-            $type == 'textarea'
+            $type == 'textarea' ||
+            $type == 'date'
         )
         {
             return '{!! Form::' . $type . '(\'' . $fieldData->name . '\', (isset($model)) ? $model->' . $fieldData->name . ' : null, ' . $options . ') !!}';
