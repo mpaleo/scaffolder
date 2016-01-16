@@ -2,8 +2,26 @@
 
 namespace Scaffolder\Compilers;
 
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
+
 abstract class AbstractViewCompiler extends AbstractCompiler
 {
+    /**
+     * Abstract compiler.
+     *
+     * @param $stub
+     * @param $modelName
+     * @param $modelData
+     * @param \stdClass $scaffolderConfig
+     * @param $hash
+     * @param \Scaffolder\Themes\ScaffolderThemeExtensionInterface $themeExtension
+     * @param null $extra
+     *
+     * @return mixed
+     */
+    abstract public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, ScaffolderThemeExtensionInterface $themeExtension, $extra = null);
+
     /**
      * Replace the breadcrumb.
      *

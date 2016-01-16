@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractViewCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
 
 class IndexViewCompiler extends AbstractViewCompiler
 {
@@ -17,11 +19,12 @@ class IndexViewCompiler extends AbstractViewCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Themes\ScaffolderThemeExtensionInterface $themeExtension
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, ScaffolderThemeExtensionInterface $themeExtension, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/view_index_' . $hash . self::CACHE_EXT)))
         {
@@ -36,7 +39,7 @@ class IndexViewCompiler extends AbstractViewCompiler
                 ->addDatatableFields($modelName, $modelData)
                 ->setTableHeaders($modelData)
                 ->replaceRoutePrefix($scaffolderConfig->routing->prefix)
-                ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
+                ->store($modelName, $scaffolderConfig, $themeExtension->runAfterIndexViewIsCompiled($this->stub, $modelData, $scaffolderConfig), new FileToCompile(false, $hash));
         }
     }
 
@@ -50,7 +53,7 @@ class IndexViewCompiler extends AbstractViewCompiler
      *
      * @return string
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->views) . strtolower($modelName) . '/index.blade.php';
 

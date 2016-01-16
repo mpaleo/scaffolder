@@ -3,11 +3,13 @@
 namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
-use Scaffolder\Compilers\AbstractCompiler;
+use Scaffolder\Compilers\AbstractCoreCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
 
-class RouteCompiler extends AbstractCompiler
+class RouteCompiler extends AbstractCoreCompiler
 {
     /**
      * Compiles a route.
@@ -21,7 +23,7 @@ class RouteCompiler extends AbstractCompiler
      *
      * @return mixed
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
     {
         $this->stub = $stub;
 
@@ -39,7 +41,7 @@ class RouteCompiler extends AbstractCompiler
      *
      * @return mixed
      */
-    public function compileGroup($stub, $compiledRoutes, \stdClass $scaffolderConfig)
+    public function compileGroup($stub, $compiledRoutes, stdClass $scaffolderConfig)
     {
         $this->stub = $stub;
 
@@ -60,7 +62,7 @@ class RouteCompiler extends AbstractCompiler
      *
      * @return mixed|void
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         File::append(PathParser::parse($scaffolderConfig->paths->routes), PHP_EOL . $compiled);
     }

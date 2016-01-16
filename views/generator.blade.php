@@ -347,6 +347,18 @@
                 <div class="col l6 s10 offset-l3 offset-s1">
                     <div class="card-panel">
 
+                        {{-- Theme extensions --}}
+                        <div id="theme-extensions-section" class="section center-align scrollspy">
+                            <h5>Theme extensions</h5>
+                        </div>
+
+                        @include('scaffolder.theme.extension::extension')
+                    </div>
+                </div>
+
+                <div class="col l6 s10 offset-l3 offset-s1">
+                    <div class="card-panel">
+
                         {{-- Model generation --}}
                         <div id="model-generation-section" class="section center-align scrollspy">
                             <h5>Model generation</h5>
@@ -675,6 +687,7 @@
             <li><a href="#namespaces-section">Namespaces</a></li>
             <li><a href="#inheritances-section">Inheritances</a></li>
             <li><a href="#routing-section">Routing</a></li>
+            <li><a href="#theme-extensions-section">Theme extensions</a></li>
             <li><a href="#model-generation-section">Model generation</a></li>
         </ul>
     </asside>
@@ -802,7 +815,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                2015 Laravel scaffolder
+                {{ date('Y') }} Laravel scaffolder
                 <a class="grey-text text-lighten-4 right" href="https://en.wikipedia.org/wiki/Uruguay"
                    target="_blank">
                     Made with <i class="tiny material-icons pink-text">favorite</i> in Uruguay

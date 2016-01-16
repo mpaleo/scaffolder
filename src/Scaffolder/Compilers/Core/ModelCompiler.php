@@ -3,11 +3,13 @@
 namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
-use Scaffolder\Compilers\AbstractCompiler;
+use Scaffolder\Compilers\AbstractCoreCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
 
-class ModelCompiler extends AbstractCompiler
+class ModelCompiler extends AbstractCoreCompiler
 {
     /**
      * Compiles a model.
@@ -21,7 +23,7 @@ class ModelCompiler extends AbstractCompiler
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/model_' . $hash . self::CACHE_EXT)))
         {
@@ -51,7 +53,7 @@ class ModelCompiler extends AbstractCompiler
      *
      * @return string
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->models) . $modelName . '.php';
 
@@ -76,7 +78,7 @@ class ModelCompiler extends AbstractCompiler
      *
      * @return $this
      */
-    private function replaceNamespaceModelExtend(\stdClass $scaffolderConfig)
+    private function replaceNamespaceModelExtend(stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{namespace_model_extend}}', $scaffolderConfig->inheritance->model, $this->stub);
 
@@ -121,7 +123,7 @@ class ModelCompiler extends AbstractCompiler
      *
      * @return $this
      */
-    private function replaceTableName(\stdClass $scaffolderConfig, $modelName)
+    private function replaceTableName(stdClass $scaffolderConfig, $modelName)
     {
         $tableName = isset($scaffolderConfig->tableName) && !empty($scaffolderConfig->tableName) ? $scaffolderConfig->tableName : $modelName . 's';
 

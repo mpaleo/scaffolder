@@ -3,11 +3,12 @@
 namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
-use Scaffolder\Compilers\AbstractCompiler;
+use Scaffolder\Compilers\AbstractCoreCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use stdClass;
 
-class ControllerCompiler extends AbstractCompiler
+class ControllerCompiler extends AbstractCoreCompiler
 {
     /**
      * Compiles a controller.
@@ -21,7 +22,7 @@ class ControllerCompiler extends AbstractCompiler
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/controller_' . $hash . self::CACHE_EXT)))
         {
@@ -49,7 +50,7 @@ class ControllerCompiler extends AbstractCompiler
      *
      * @return string
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->controllers) . $modelName . 'Controller.php';
 

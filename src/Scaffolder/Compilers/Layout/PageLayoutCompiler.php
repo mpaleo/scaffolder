@@ -1,11 +1,13 @@
 <?php
 
-namespace Scaffolder\Compilers\View;
+namespace Scaffolder\Compilers\Layout;
 
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractViewCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
 
 class PageLayoutCompiler extends AbstractViewCompiler
 {
@@ -17,11 +19,12 @@ class PageLayoutCompiler extends AbstractViewCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Themes\ScaffolderThemeExtensionInterface $themeExtension
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, ScaffolderThemeExtensionInterface $themeExtension, $extra = null)
     {
         $this->stub = $stub;
 
@@ -29,7 +32,7 @@ class PageLayoutCompiler extends AbstractViewCompiler
             ->setAppName($scaffolderConfig)
             ->setLinks($extra['links'], $scaffolderConfig)
             ->replaceRoutePrefix($scaffolderConfig->routing->prefix)
-            ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(null, null));
+            ->store($modelName, $scaffolderConfig, $themeExtension->runAfterPageLayoutIsCompiled($this->stub, $scaffolderConfig), new FileToCompile(null, null));
     }
 
     /**
@@ -42,7 +45,7 @@ class PageLayoutCompiler extends AbstractViewCompiler
      *
      * @return string
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->views) . 'layouts/page.blade.php';
 
@@ -58,7 +61,7 @@ class PageLayoutCompiler extends AbstractViewCompiler
      *
      * @return $this
      */
-    private function setPageTitle(\stdClass $scaffolderConfig)
+    private function setPageTitle(stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{page_title}}', $scaffolderConfig->userInterface->pageTitle, $this->stub);
 
@@ -72,7 +75,7 @@ class PageLayoutCompiler extends AbstractViewCompiler
      *
      * @return $this
      */
-    private function setAppName(\stdClass $scaffolderConfig)
+    private function setAppName(stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{app_name}}', $scaffolderConfig->name, $this->stub);
 
@@ -87,7 +90,7 @@ class PageLayoutCompiler extends AbstractViewCompiler
      *
      * @return $this
      */
-    private function setLinks($links, \stdClass $scaffolderConfig)
+    private function setLinks($links, stdClass $scaffolderConfig)
     {
         $navLinks = '';
 

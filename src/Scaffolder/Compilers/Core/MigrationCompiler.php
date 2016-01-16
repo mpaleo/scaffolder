@@ -4,11 +4,13 @@ namespace Scaffolder\Compilers\Core;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
-use Scaffolder\Compilers\AbstractCompiler;
+use Scaffolder\Compilers\AbstractCoreCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use stdClass;
 
-class MigrationCompiler extends AbstractCompiler
+class MigrationCompiler extends AbstractCoreCompiler
 {
     /**
      * Migration date
@@ -36,7 +38,7 @@ class MigrationCompiler extends AbstractCompiler
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
     {
         // Add time to migration
         $this->date->addSeconds(5);
@@ -66,7 +68,7 @@ class MigrationCompiler extends AbstractCompiler
      *
      * @return string
      */
-    protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
+    protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
         $path = PathParser::parse($scaffolderConfig->paths->migrations) . $this->date->format('Y_m_d_His') . '_create_' . strtolower($modelName) . 's_table.php';
 
@@ -92,7 +94,7 @@ class MigrationCompiler extends AbstractCompiler
      *
      * @return $this
      */
-    private function replaceTableName(\stdClass $scaffolderConfig, $modelName)
+    private function replaceTableName(stdClass $scaffolderConfig, $modelName)
     {
         $tableName = isset($scaffolderConfig->tableName) && !empty($scaffolderConfig->tableName) ? $scaffolderConfig->tableName : $modelName . 's';
 

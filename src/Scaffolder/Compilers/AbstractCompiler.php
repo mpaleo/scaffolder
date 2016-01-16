@@ -3,26 +3,21 @@
 namespace Scaffolder\Compilers;
 
 use Scaffolder\Compilers\Support\FileToCompile;
+use stdClass;
 
 abstract class AbstractCompiler
 {
+    /**
+     * File stub.
+     * @var string
+     */
     protected $stub;
 
-    const CACHE_EXT = '.scf';
 
     /**
-     * Abstract compiler.
-     *
-     * @param $stub
-     * @param $modelName
-     * @param $modelData
-     * @param \stdClass $scaffolderConfig
-     * @param $hash
-     * @param null $extra
-     *
-     * @return mixed
+     * Cache file extension.
      */
-    abstract public function compile($stub, $modelName, $modelData, \stdClass $scaffolderConfig, $hash, $extra = null);
+    const CACHE_EXT = '.scf';
 
     /**
      * Store the compiled stub.
@@ -34,7 +29,7 @@ abstract class AbstractCompiler
      *
      * @return mixed
      */
-    abstract protected function store($modelName, \stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile);
+    abstract protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile);
 
     /**
      * Replace the class name.
@@ -58,7 +53,7 @@ abstract class AbstractCompiler
      *
      * @return $this
      */
-    protected function replaceNamespace(\stdClass $scaffolderConfig)
+    protected function replaceNamespace(stdClass $scaffolderConfig)
     {
         $this->stub = str_replace('{{namespace}}', $scaffolderConfig->namespaces->models, $this->stub);
 
