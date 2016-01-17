@@ -49,13 +49,4 @@ class ScaffolderServiceProvider extends ServiceProvider
             'scaffolder.command.cache.clear'
         ]);
     }
-
-    /**
-     * Get the services provided by the provider.
-     * @return array
-     */
-    public function provides()
-    {
-        return ['scaffolder.command.generate', 'scaffolder.command.cache.clear'];
-    }
 }

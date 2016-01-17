@@ -43,13 +43,4 @@ abstract class AbstractThemeServiceProvider extends HtmlServiceProvider
      * Register the theme extension instance.
      */
     abstract protected function registerThemeExtension();
-
-    /**
-     * Get the services provided by the provider.
-     * @return array
-     */
-    public function provides()
-    {
-        return ['html', 'form', 'scaffolder.theme.views', 'scaffolder.theme.layouts'];
-    }
 }
