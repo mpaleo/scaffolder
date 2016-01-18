@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractCoreCompiler;
 use Scaffolder\Compilers\Support\FileToCompile;
 use Scaffolder\Compilers\Support\PathParser;
-use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
 use stdClass;
 
 class MigrationCompiler extends AbstractCoreCompiler
 {
     /**
      * Migration date
-     * @var static
+     * @var \Carbon\Carbon
      */
     private $date;
 
