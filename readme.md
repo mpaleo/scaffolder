@@ -14,10 +14,13 @@ You are free to extend it the way you need. This package only generate things th
 2. Add the following packages to your composer.json
 
     ```json
+    ...
     "laravelcollective/html": "5.1.*",
     "yajra/laravel-datatables-oracle": "~5.0",
+    "mpaleo/view-tags": "dev-master",
     "mpaleo/scaffolder-theme-material": "dev-master",
     "mpaleo/scaffolder": "dev-master",
+    ...
     ```
 3. Update your packages
 
@@ -27,16 +30,22 @@ You are free to extend it the way you need. This package only generate things th
 4. Add the service providers to the providers array in `{laravel-root}\config\app.php`
 
     ```php
+    ...
+    ViewTags\ViewTagsServiceProvider::class,
     ScaffolderTheme\ScaffolderThemeServiceProvider::class,
     Scaffolder\ScaffolderServiceProvider::class,
     yajra\Datatables\DatatablesServiceProvider::class,
+    ...
     ```
 5. Add the following aliases in `{laravel-root}\config\app.php`
 
     ```php
+    ...
+    'ViewTags'   => ViewTags\ViewTags::class,
     'Form'       => Collective\Html\FormFacade::class,
     'Html'       => Collective\Html\HtmlFacade::class,
     'Datatables' => yajra\Datatables\Datatables::class,
+    ...
     ```
 
 ## Getting started
