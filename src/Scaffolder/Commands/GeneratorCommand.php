@@ -17,11 +17,12 @@ use Scaffolder\Compilers\View\EditViewCompiler;
 use Scaffolder\Compilers\View\IndexViewCompiler;
 use Scaffolder\Compilers\View\LoginViewCompiler;
 use Scaffolder\Compilers\View\WelcomeViewCompiler;
+use Scaffolder\Support\Contracts\ScaffolderExtensionInterface;
+use Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface;
+use Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface;
+use Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface;
 use Scaffolder\Support\Directory;
 use Scaffolder\Support\Json;
-use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
-use Scaffolder\Themes\ScaffolderThemeLayoutsInterface;
-use Scaffolder\Themes\ScaffolderThemeViewsInterface;
 
 class GeneratorCommand extends Command
 {
@@ -45,36 +46,54 @@ class GeneratorCommand extends Command
 
     /**
      * Theme views implementation.
-     * @var \Scaffolder\Themes\ScaffolderThemeViewsInterface
+     * @var \Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface
      */
     protected $themeViews;
 
     /**
      * Theme layouts implementation.
-     * @var \Scaffolder\Themes\ScaffolderThemeLayoutsInterface
+     * @var \Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface
      */
     protected $themeLayouts;
 
     /**
      * Theme extension implementation.
-     * @var \Scaffolder\Themes\ScaffolderThemeExtensionInterface
+     * @var \Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface
      */
     protected $themeExtension;
 
     /**
+     * Extension implementations.
+     * @var \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[]
+     */
+    protected $extensions;
+
+    /**
      * Create a new generator command instance.
      *
-     * @param \Scaffolder\Themes\ScaffolderThemeViewsInterface $themeViews
-     * @param \Scaffolder\Themes\ScaffolderThemeLayoutsInterface $themeLayouts
-     * @param \Scaffolder\Themes\ScaffolderThemeExtensionInterface $themeExtension
+     * @param \Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface $themeViews
+     * @param \Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface $themeLayouts
+     * @param \Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface $themeExtension
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
+     *
+     * @throws \Exception
      */
-    public function __construct(ScaffolderThemeViewsInterface $themeViews, ScaffolderThemeLayoutsInterface $themeLayouts, ScaffolderThemeExtensionInterface $themeExtension)
+    public function __construct(ScaffolderThemeViewsInterface $themeViews, ScaffolderThemeLayoutsInterface $themeLayouts, ScaffolderThemeExtensionInterface $themeExtension, array $extensions)
     {
         parent::__construct();
+
+        foreach ($extensions as $extension)
+        {
+            if (!$extension instanceof ScaffolderExtensionInterface)
+            {
+                throw new \Exception('Scaffolder extensions must implement \Scaffolder\Support\Contracts\ScaffolderExtensionInterface');
+            }
+        }
 
         $this->themeViews = $themeViews;
         $this->themeLayouts = $themeLayouts;
         $this->themeExtension = $themeExtension;
+        $this->extensions = $extensions;
         $this->stubsDirectory = __DIR__ . '/../../../stubs/';
     }
 
@@ -146,13 +165,13 @@ class GeneratorCommand extends Command
             $modelHash = md5_file($modelFile->getRealPath());
 
             // Compile stubs
-            array_push($modelCompilerOutput, $modelCompiler->compile($modelStub, $modelName, $modelData, $scaffolderConfig, $modelHash));
-            array_push($controllerCompilerOutput, $controllerCompiler->compile($controllerStub, $modelName, $modelData, $scaffolderConfig, $modelHash));
-            array_push($migrationCompilerOutput, $migrationCompiler->compile($migrationStub, $modelName, $modelData, $scaffolderConfig, $modelHash));
-            array_push($viewCompilerOutput, $indexViewCompiler->compile($indexViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension));
-            array_push($viewCompilerOutput, $createViewCompiler->compile($createViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension));
-            array_push($viewCompilerOutput, $editViewCompiler->compile($editViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension));
-            $compiledRoutes .= $routeCompiler->compile($routeStub, $modelName, $modelData, $scaffolderConfig, null);
+            array_push($modelCompilerOutput, $modelCompiler->compile($modelStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->extensions));
+            array_push($controllerCompilerOutput, $controllerCompiler->compile($controllerStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->extensions));
+            array_push($migrationCompilerOutput, $migrationCompiler->compile($migrationStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->extensions));
+            array_push($viewCompilerOutput, $indexViewCompiler->compile($indexViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension, $this->extensions));
+            array_push($viewCompilerOutput, $createViewCompiler->compile($createViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension, $this->extensions));
+            array_push($viewCompilerOutput, $editViewCompiler->compile($editViewStub, $modelName, $modelData, $scaffolderConfig, $modelHash, $this->themeExtension, $this->extensions));
+            $compiledRoutes .= $routeCompiler->compile($routeStub, $modelName, $modelData, $scaffolderConfig, null, $this->extensions);
 
             // Add entity link
             array_push($sidenavLinks, ['modelName' => $modelName, 'modelLabel' => $modelData->modelLabel]);
@@ -168,22 +187,22 @@ class GeneratorCommand extends Command
         Directory::createIfNotExists(base_path('resources/views/layouts'));
 
         // Compile page layout
-        array_push($viewCompilerOutput, $pageLayoutViewCompiler->compile(File::get($this->themeLayouts->getPagePath()), null, null, $scaffolderConfig, null, $this->themeExtension, ['links' => $sidenavLinks]));
+        array_push($viewCompilerOutput, $pageLayoutViewCompiler->compile(File::get($this->themeLayouts->getPagePath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions, ['links' => $sidenavLinks]));
 
         // Compile create layout
-        array_push($viewCompilerOutput, $createLayoutCompiler->compile(File::get($this->themeLayouts->getCreatePath()), null, null, $scaffolderConfig, null, $this->themeExtension));
+        array_push($viewCompilerOutput, $createLayoutCompiler->compile(File::get($this->themeLayouts->getCreatePath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions));
 
         // Compile edit layout
-        array_push($viewCompilerOutput, $editLayoutCompiler->compile(File::get($this->themeLayouts->getEditPath()), null, null, $scaffolderConfig, null, $this->themeExtension));
+        array_push($viewCompilerOutput, $editLayoutCompiler->compile(File::get($this->themeLayouts->getEditPath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions));
 
         // Compile dashboard view
-        array_push($viewCompilerOutput, $dashboardViewCompiler->compile(File::get($this->themeViews->getDashboardPath()), null, null, $scaffolderConfig, null, $this->themeExtension));
+        array_push($viewCompilerOutput, $dashboardViewCompiler->compile(File::get($this->themeViews->getDashboardPath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions));
 
         // Compile welcome view
-        array_push($viewCompilerOutput, $welcomeViewCompiler->compile(File::get($this->themeViews->getWelcomePath()), null, null, $scaffolderConfig, null, $this->themeExtension));
+        array_push($viewCompilerOutput, $welcomeViewCompiler->compile(File::get($this->themeViews->getWelcomePath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions));
 
         // Compile login view
-        array_push($viewCompilerOutput, $loginViewCompiler->compile(File::get($this->themeViews->getLoginPath()), null, null, $scaffolderConfig, null, $this->themeExtension));
+        array_push($viewCompilerOutput, $loginViewCompiler->compile(File::get($this->themeViews->getLoginPath()), null, null, $scaffolderConfig, null, $this->themeExtension, $this->extensions));
 
         // Finish progress
         $this->output->progressFinish();

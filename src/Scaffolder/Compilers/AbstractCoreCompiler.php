@@ -14,9 +14,10 @@ abstract class AbstractCoreCompiler extends AbstractCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return mixed
      */
-    abstract public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null);
+    abstract public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, array $extensions, $extra = null);
 }

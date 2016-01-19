@@ -352,7 +352,31 @@
                             <h5>Theme extensions</h5>
                         </div>
 
-                        @include('scaffolder.theme.extension::extension')
+                        @if(!empty(ViewTags::taggedWith('scaffolder.theme.extension')))
+                            @foreach (ViewTags::taggedWith('scaffolder.theme.extension') as $extensionView)
+                                @include($extensionView)
+                            @endforeach
+                        @else
+                            <p>There are no extension views to load</p>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="col l6 s10 offset-l3 offset-s1">
+                    <div class="card-panel">
+
+                        {{-- Extensions --}}
+                        <div id="extensions-section" class="section center-align scrollspy">
+                            <h5>Extensions</h5>
+                        </div>
+
+                        @if(!empty(ViewTags::taggedWith('scaffolder.extension')))
+                            @foreach (ViewTags::taggedWith('scaffolder.extension') as $extensionView)
+                                @include($extensionView)
+                            @endforeach
+                        @else
+                            <p>There are no extension views to load</p>
+                        @endif
                     </div>
                 </div>
 
@@ -688,6 +712,7 @@
             <li><a href="#inheritances-section">Inheritances</a></li>
             <li><a href="#routing-section">Routing</a></li>
             <li><a href="#theme-extensions-section">Theme extensions</a></li>
+            <li><a href="#extensions-section">Extensions</a></li>
             <li><a href="#model-generation-section">Model generation</a></li>
         </ul>
     </asside>

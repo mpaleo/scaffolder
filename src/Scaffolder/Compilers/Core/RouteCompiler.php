@@ -4,8 +4,8 @@ namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractCoreCompiler;
-use Scaffolder\Compilers\Support\FileToCompile;
-use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Support\FileToCompile;
+use Scaffolder\Support\PathParser;
 use stdClass;
 
 class RouteCompiler extends AbstractCoreCompiler
@@ -18,11 +18,12 @@ class RouteCompiler extends AbstractCoreCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return mixed
      */
-    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, array $extensions, $extra = null)
     {
         $this->stub = $stub;
 
@@ -57,7 +58,7 @@ class RouteCompiler extends AbstractCoreCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return mixed|void
      */

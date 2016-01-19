@@ -1,6 +1,6 @@
 <?php
 
-namespace Scaffolder\Compilers\Support;
+namespace Scaffolder\Support;
 
 class PathParser
 {

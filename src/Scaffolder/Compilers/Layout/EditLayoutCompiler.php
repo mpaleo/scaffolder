@@ -4,9 +4,9 @@ namespace Scaffolder\Compilers\Layout;
 
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractViewCompiler;
-use Scaffolder\Compilers\Support\FileToCompile;
-use Scaffolder\Compilers\Support\PathParser;
-use Scaffolder\Themes\ScaffolderThemeExtensionInterface;
+use Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface;
+use Scaffolder\Support\FileToCompile;
+use Scaffolder\Support\PathParser;
 use stdClass;
 
 class EditLayoutCompiler extends AbstractViewCompiler
@@ -19,12 +19,13 @@ class EditLayoutCompiler extends AbstractViewCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
-     * @param \Scaffolder\Themes\ScaffolderThemeExtensionInterface $themeExtension
+     * @param \Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface $themeExtension
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, ScaffolderThemeExtensionInterface $themeExtension, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, ScaffolderThemeExtensionInterface $themeExtension, array $extensions, $extra = null)
     {
         $this->stub = $stub;
 
@@ -37,7 +38,7 @@ class EditLayoutCompiler extends AbstractViewCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

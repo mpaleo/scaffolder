@@ -1,6 +1,6 @@
 <?php
 
-namespace Scaffolder\Themes;
+namespace Scaffolder;
 
 use Collective\Html\HtmlServiceProvider;
 

@@ -5,8 +5,8 @@ namespace Scaffolder\Compilers\Core;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractCoreCompiler;
-use Scaffolder\Compilers\Support\FileToCompile;
-use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Support\FileToCompile;
+use Scaffolder\Support\PathParser;
 use stdClass;
 
 class MigrationCompiler extends AbstractCoreCompiler
@@ -33,11 +33,12 @@ class MigrationCompiler extends AbstractCoreCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, array $extensions, $extra = null)
     {
         // Add time to migration
         $this->date->addSeconds(5);
@@ -50,10 +51,16 @@ class MigrationCompiler extends AbstractCoreCompiler
         {
             $this->stub = $stub;
 
-            return $this->replaceClassName($modelName)
+            $this->replaceClassName($modelName)
                 ->replaceTableName($scaffolderConfig, $modelName)
-                ->addFields($modelData)
-                ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
+                ->addFields($modelData);
+
+            foreach ($extensions as $extension)
+            {
+                $this->stub = $extension->runAfterMigrationIsCompiled($this->stub, $modelData, $scaffolderConfig);
+            }
+
+            return $this->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
     }
 
@@ -63,7 +70,7 @@ class MigrationCompiler extends AbstractCoreCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

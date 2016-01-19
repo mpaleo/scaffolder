@@ -4,8 +4,8 @@ namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractCoreCompiler;
-use Scaffolder\Compilers\Support\FileToCompile;
-use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Support\FileToCompile;
+use Scaffolder\Support\PathParser;
 use stdClass;
 
 class ControllerCompiler extends AbstractCoreCompiler
@@ -18,11 +18,12 @@ class ControllerCompiler extends AbstractCoreCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, array $extensions, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/controller_' . $hash . self::CACHE_EXT)))
         {
@@ -32,11 +33,17 @@ class ControllerCompiler extends AbstractCoreCompiler
         {
             $this->stub = $stub;
 
-            return $this->replaceClassName($modelName)
+            $this->replaceClassName($modelName)
                 ->setValidations($modelData)
                 ->replacePrimaryKey($modelData)
-                ->replaceRoutePrefix($scaffolderConfig->routing->prefix)
-                ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
+                ->replaceRoutePrefix($scaffolderConfig->routing->prefix);
+
+            foreach ($extensions as $extension)
+            {
+                $this->stub = $extension->runAfterControllerIsCompiled($this->stub, $modelData, $scaffolderConfig);
+            }
+
+            $this->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
     }
 
@@ -46,7 +53,7 @@ class ControllerCompiler extends AbstractCoreCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return string
      */

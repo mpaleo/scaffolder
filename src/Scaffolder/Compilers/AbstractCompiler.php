@@ -2,7 +2,7 @@
 
 namespace Scaffolder\Compilers;
 
-use Scaffolder\Compilers\Support\FileToCompile;
+use Scaffolder\Support\FileToCompile;
 use stdClass;
 
 abstract class AbstractCompiler
@@ -25,7 +25,7 @@ abstract class AbstractCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return mixed
      */

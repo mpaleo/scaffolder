@@ -4,8 +4,8 @@ namespace Scaffolder\Compilers\Core;
 
 use Illuminate\Support\Facades\File;
 use Scaffolder\Compilers\AbstractCoreCompiler;
-use Scaffolder\Compilers\Support\FileToCompile;
-use Scaffolder\Compilers\Support\PathParser;
+use Scaffolder\Support\FileToCompile;
+use Scaffolder\Support\PathParser;
 use stdClass;
 
 class ModelCompiler extends AbstractCoreCompiler
@@ -18,11 +18,12 @@ class ModelCompiler extends AbstractCoreCompiler
      * @param $modelData
      * @param \stdClass $scaffolderConfig
      * @param $hash
+     * @param \Scaffolder\Support\Contracts\ScaffolderExtensionInterface[] $extensions
      * @param null $extra
      *
      * @return string
      */
-    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, $extra = null)
+    public function compile($stub, $modelName, $modelData, stdClass $scaffolderConfig, $hash, array $extensions, $extra = null)
     {
         if (File::exists(base_path('scaffolder-config/cache/model_' . $hash . self::CACHE_EXT)))
         {
@@ -32,13 +33,19 @@ class ModelCompiler extends AbstractCoreCompiler
         {
             $this->stub = $stub;
 
-            return $this->replaceNamespace($scaffolderConfig)
+            $this->replaceNamespace($scaffolderConfig)
                 ->replaceNamespaceModelExtend($scaffolderConfig)
                 ->replaceClassName($modelName)
                 ->setPrimaryKey($modelData)
                 ->addFillable($modelData)
-                ->replaceTableName($scaffolderConfig, $modelName)
-                ->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
+                ->replaceTableName($scaffolderConfig, $modelName);
+
+            foreach ($extensions as $extension)
+            {
+                $this->stub = $extension->runAfterModelIsCompiled($this->stub, $modelData, $scaffolderConfig);
+            }
+
+            return $this->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
     }
 
@@ -48,7 +55,7 @@ class ModelCompiler extends AbstractCoreCompiler
      * @param $modelName
      * @param \stdClass $scaffolderConfig
      * @param $compiled
-     * @param \Scaffolder\Compilers\Support\FileToCompile $fileToCompile
+     * @param \Scaffolder\Support\FileToCompile $fileToCompile
      *
      * @return string
      */
