@@ -16,7 +16,7 @@ You are free to extend it the way you need. This package only generate things th
     ```json
     ...
     "laravelcollective/html": "5.2.*",
-    "yajra/laravel-datatables-oracle": "~5.0",
+    "yajra/laravel-datatables-oracle": "~6.0",
     "mpaleo/view-tags": "dev-master",
     "mpaleo/scaffolder-theme-material": "dev-master",
     "mpaleo/scaffolder": "dev-master",
@@ -34,7 +34,7 @@ You are free to extend it the way you need. This package only generate things th
     ViewTags\ViewTagsServiceProvider::class,
     ScaffolderTheme\ScaffolderThemeServiceProvider::class,
     Scaffolder\ScaffolderServiceProvider::class,
-    yajra\Datatables\DatatablesServiceProvider::class,
+    Yajra\Datatables\DatatablesServiceProvider::class,
     ...
     ```
 5. Add the following aliases in `{laravel-root}\config\app.php`
@@ -44,7 +44,6 @@ You are free to extend it the way you need. This package only generate things th
     'ViewTags'   => ViewTags\ViewTags::class,
     'Form'       => Collective\Html\FormFacade::class,
     'Html'       => Collective\Html\HtmlFacade::class,
-    'Datatables' => yajra\Datatables\Datatables::class,
     ...
     ```
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{{class_name}};
-use Datatables;
+use Yajra\Datatables\Datatables;
 
 class {{class_name}}Controller extends Controller
 {
