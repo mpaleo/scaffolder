@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Scaffolder for Laravel by mpaleo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Scaffolder for Laravel</h1>
+      <h2 class="project-tagline">Craft your next application easier and faster</h2>
+      <a href="https://github.com/mpaleo/scaffolder" class="btn">View on GitHub</a>
+      <a href="https://github.com/mpaleo/scaffolder/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mpaleo/scaffolder/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>Remove the headache of creating over and over again the base code for most of your projects. Scaffolder is tailored following the principle that the development process must be a happy thing so, code and enjoy !
+You are free to extend it the way you need. This package only generate things that you need to start, always keeping the code clean and abstract. Are you hungry ? Fork it !</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>Get <a href="http://laravel.com/docs/5.2#installation">laravel</a> up and running</li>
+<li>
+<p>Add the following packages to your composer.json</p>
+
+<div class="highlight highlight-source-json"><pre>...
+<span class="pl-s"><span class="pl-pds">"</span>laravelcollective/html<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>5.2.*<span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>yajra/laravel-datatables-oracle<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>~6.0<span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>mpaleo/view-tags<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>mpaleo/scaffolder-theme-material<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>mpaleo/scaffolder<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>,
+...</pre></div>
+</li>
+<li>
+<p>Update your packages</p>
+
+<div class="highlight highlight-source-shell"><pre>composer update</pre></div>
+</li>
+<li>
+<p>Add the service providers to the providers array in <code>{laravel-root}\config\app.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"><span class="pl-c1">ViewTags\</span><span class="pl-c1">ViewTagsServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-c1">ScaffolderTheme\</span><span class="pl-c1">ScaffolderThemeServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-c1">Scaffolder\</span><span class="pl-c1">ScaffolderServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-c1">Yajra\Datatables\</span><span class="pl-c1">DatatablesServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-k">...</span></span></pre></div>
+</li>
+<li>
+<p>Add the following aliases in <code>{laravel-root}\config\app.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>ViewTags<span class="pl-pds">'</span></span>   <span class="pl-k">=&gt;</span> <span class="pl-c1">ViewTags\</span><span class="pl-c1">ViewTags</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>Form<span class="pl-pds">'</span></span>       <span class="pl-k">=&gt;</span> <span class="pl-c1">Collective\Html\</span><span class="pl-c1">FormFacade</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>Html<span class="pl-pds">'</span></span>       <span class="pl-k">=&gt;</span> <span class="pl-c1">Collective\Html\</span><span class="pl-c1">HtmlFacade</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-k">...</span></span></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>First you need to publish the configuration files and assets</p>
+
+<div class="highlight highlight-source-shell"><pre>./artisan vendor:publish --provider=<span class="pl-s"><span class="pl-pds">"</span>Scaffolder\ScaffolderServiceProvider<span class="pl-pds">"</span></span>
+./artisan vendor:publish --provider=<span class="pl-s"><span class="pl-pds">"</span>ScaffolderTheme\ScaffolderThemeServiceProvider<span class="pl-pds">"</span></span> --force</pre></div>
+
+<p>Here we are using the theme <a href="https://github.com/mpaleo/scaffolder-theme-material">mpaleo/scaffolder-theme-material</a>, but you can fork it, and do whatever you want/need :)</p>
+
+<p>At this point, you already can start to scaffold things. You have two ways to use the package.</p>
+
+<h5>
+<a id="command-line-way" class="anchor" href="#command-line-way" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Command line way</h5>
+
+<p>When you execute the artisan publish command, the service provider creates the folder <code>{laravel-root}\scaffolder-config</code> that has the following structure:</p>
+
+<pre><code>- scaffolder-config
+-- app.json
+-- models
+-- cache
+</code></pre>
+
+<p>The <code>app.json</code> file contains global settings, also you will get some demo files for models. All you need to scaffold an application is to edit the <code>app.json</code> file, and create the json files for the models you want. After you have all the files ready, you have the following commands:</p>
+
+<p>This command generate the application using the files that you have provided.</p>
+
+<div class="highlight highlight-source-shell"><pre>./artisan scaffolder:generate</pre></div>
+
+<p>For instance, when you update the package, you should clear the cache files stored in <code>{laravel-root}\scaffolder-config\cache</code></p>
+
+<div class="highlight highlight-source-shell"><pre>./artisan scaffolder:cache-clear</pre></div>
+
+<h5>
+<a id="user-interface-way" class="anchor" href="#user-interface-way" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User interface way</h5>
+
+<p>All you need to do, is go to your <code>http://{crazyhost}/scaffolder/generator</code> and fill some inputs :)</p>
+
+<h5>
+<a id="next-steps" class="anchor" href="#next-steps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Next steps</h5>
+
+<p>Check out the <a href="https://github.com/mpaleo/scaffolder/wiki">wiki</a> to get more information about things that you need to know</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Just let me know your ideas and let's work together</p>
+
+<h3>
+<a id="coding-style" class="anchor" href="#coding-style" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Coding style</h3>
+
+<p>It would be great if we follow the PSR-2 coding standard and the PSR-4 autoloading standard.</p>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
+
+<p>The scaffolder package is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mpaleo/scaffolder">Scaffolder for Laravel</a> is maintained by <a href="https://github.com/mpaleo">mpaleo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
