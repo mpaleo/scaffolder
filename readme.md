@@ -2,7 +2,7 @@
 ![Scaffolder for laravel](https://cloud.githubusercontent.com/assets/5132565/11066969/17feb094-87a9-11e5-96cb-1402e4c7aaca.png)
 [![Software license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Quality score](https://img.shields.io/scrutinizer/g/mpaleo/scaffolder.svg?style=flat-square)](https://scrutinizer-ci.com/g/mpaleo/scaffolder)
-[![Laravel version](https://img.shields.io/badge/for%20laravel-5.1-orange.svg?style=flat-square)](https://github.com/laravel/framework/tree/5.1)
+[![Laravel version](https://img.shields.io/badge/for%20laravel-5.2-orange.svg?style=flat-square)](https://github.com/laravel/framework/tree/5.2)
 [![Waffle board](https://img.shields.io/badge/board-on%20waffle-blue.svg?style=flat-square)](https://waffle.io/mpaleo/scaffolder)
 [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-blue.svg?style=flat-square)](https://gitter.im/mpaleo/scaffolder)
 
@@ -10,12 +10,12 @@ Remove the headache of creating over and over again the base code for most of yo
 You are free to extend it the way you need. This package only generate things that you need to start, always keeping the code clean and abstract. Are you hungry ? Fork it !
 
 ## Installation
-1. Get [laravel](http://laravel.com/docs/5.1#installation) up and running
+1. Get [laravel](http://laravel.com/docs/5.2#installation) up and running
 2. Add the following packages to your composer.json
 
     ```json
     ...
-    "laravelcollective/html": "5.1.*",
+    "laravelcollective/html": "5.2.*",
     "yajra/laravel-datatables-oracle": "~5.0",
     "mpaleo/view-tags": "dev-master",
     "mpaleo/scaffolder-theme-material": "dev-master",
