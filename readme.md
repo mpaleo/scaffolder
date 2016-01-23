@@ -18,8 +18,8 @@ You are free to extend it the way you need. This package only generate things th
     "laravelcollective/html": "5.2.*",
     "yajra/laravel-datatables-oracle": "~6.0",
     "mpaleo/view-tags": "dev-master",
-    "mpaleo/scaffolder-theme-material": "dev-master",
-    "mpaleo/scaffolder": "dev-master",
+    "mpaleo/scaffolder-theme-material": "~1.0",
+    "mpaleo/scaffolder": "~1.0",
     ...
     ```
 3. Update your packages
