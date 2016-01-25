@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Interface Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface | Scaffolder v1.0.0</title>
+
+<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/stylesheets/api-override.css">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Scaffolder.Support.Contracts.html" title="Summary of Scaffolder\Support\Contracts"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<a>Class</a>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Scaffolder.html">
+							Scaffolder<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Commands.html">
+							Commands						</a>
+							</li>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.html">
+							Compilers<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.html">
+							Core						</a>
+							</li>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Layout.html">
+							Layout						</a>
+							</li>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.View.html">
+							View						</a>
+							</li>
+								</ul></li>
+					<li class="active">
+						<a href="namespace-Scaffolder.Support.html">
+							Support<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Scaffolder.Support.Contracts.html">
+							Contracts						</a>
+							</li>
+								</ul></li></ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderExtensionInterface.html">ScaffolderExtensionInterface</a></li>
+				<li class="active"><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html">ScaffolderThemeExtensionInterface</a></li>
+				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeLayoutsInterface.html">ScaffolderThemeLayoutsInterface</a></li>
+				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeViewsInterface.html">ScaffolderThemeViewsInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Interface ScaffolderThemeExtensionInterface</h1>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Support.html">Support</a>\<a href="namespace-Scaffolder.Support.Contracts.html">Contracts</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#5-99" title="Go to source code">Scaffolder/Support/Contracts/ScaffolderThemeExtensionInterface.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="runAfterIndexViewIsCompiled" id="_runAfterIndexViewIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterIndexViewIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#7-16" title="Go to source code">runAfterIndexViewIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$modelData</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the index view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the index view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$modelData</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterCreateViewIsCompiled" id="_runAfterCreateViewIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterCreateViewIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#18-27" title="Go to source code">runAfterCreateViewIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$modelData</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the create view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the create view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$modelData</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterEditViewIsCompiler" id="_runAfterEditViewIsCompiler">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterEditViewIsCompiler">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#29-38" title="Go to source code">runAfterEditViewIsCompiler</a>( <span> <var>$compiledStub</var></span>, <span> <var>$modelData</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the edit view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the edit view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$modelData</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterPageLayoutIsCompiled" id="_runAfterPageLayoutIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterPageLayoutIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#40-48" title="Go to source code">runAfterPageLayoutIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the page layout is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the page layout is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterCreateLayoutIsCompiled" id="_runAfterCreateLayoutIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterCreateLayoutIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#50-58" title="Go to source code">runAfterCreateLayoutIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the create layout is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the create layout is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterEditLayoutIsCompiled" id="_runAfterEditLayoutIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterEditLayoutIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#60-68" title="Go to source code">runAfterEditLayoutIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the edit layout is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the edit layout is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterDashboardViewIsCompiled" id="_runAfterDashboardViewIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterDashboardViewIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#70-78" title="Go to source code">runAfterDashboardViewIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the dashboard view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the dashboard view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterWelcomeViewIsCompiled" id="_runAfterWelcomeViewIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterWelcomeViewIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#80-88" title="Go to source code">runAfterWelcomeViewIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the welcome view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the welcome view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="runAfterLoginViewIsCompiled" id="_runAfterLoginViewIsCompiled">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_runAfterLoginViewIsCompiled">#</a>
+			<code><a href="source-class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html#90-98" title="Go to source code">runAfterLoginViewIsCompiled</a>( <span> <var>$compiledStub</var></span>, <span> <var>$scaffolderConfig</var></span> )</code>
+
+			<div class="description short">
+				<p>This extension is run after the login view is compiled.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>This extension is run after the login view is compiled.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledStub</var></dt>
+						<dd></dd>
+						<dt><var>$scaffolderConfig</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string<br>Should return the modified compiled stub.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.navbar-inverse {
+    background-color : #009688 !important;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+    color : #FFFFFF;
+}
+
+#menu a:hover {
+    background-color : #009688 !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover {
+    background-color : #00796B;
+}
+
+#menu #groups span {
+    top   : 9px !important;
+    right : 7px !important;
+}
+
+pre#source {
+    margin-top  : 45px !important;
+    margin-left : 30px !important;
+    box-shadow  : 0 1px 4px rgba(0, 0, 0, 0.3);
+    border      : none;
+}
+
+span.l {
+    padding-left : 6px;
+    word-wrap    : normal;
+}
+
+#menu a {
+    padding-left : 7px !important;
+}
+
+.ac_over {
+    background-color : rgba(253, 223, 131, 0.6) !important;
+    color            : #000000 !important;
+}
+
+.ac_over strong {
+    color : #000000 !important;
+}
+
+.ac_results {
+    border-radius : 3px !important;
+}
+
+.alert-info {
+    background-color : #666666 !important;
+}
+
+.alert-info a {
+    text-decoration : underline;
+}
+
+a {
+    color : #009688;
+}
+
+a:hover, a:focus {
+    color : #00B0A2;
+}
+
+#right {
+    overflow : initial !important;
+}
+
+.anchor {
+    display : none !important;
+}
+
+dl.tree, #content .alert-info {
+    box-shadow : 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+dl.tree {
+    border-radius : 3px !important;
+}
+
+#content {
+    margin-left : 20px;
+    margin-top  : 20px;
+}
+
+#menu #groups span.collapsed:hover {
+    background-position : 0 -12px !important;
+}
+
+#menu #groups span:hover {
+    background-position : 0 0 !important;
+}
+
+.navbar-inverse .navbar-form input[type=text] {
+    box-shadow : inset 0 -1px 0 #DDDDDD;
+}
+
+::selection {
+    background : rgba(253, 223, 131, 0.6);
+}
+
+::-moz-selection {
+    background : rgba(253, 223, 131, 0.6);
+}

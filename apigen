@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Args
+SOURCE=$1
+DESTINATION=$2
+VERSION=$3
+OUTPUT=${4:-dist}
+
+# Generate
+apigen generate -s $SOURCE -d $DESTINATION --title "Scaffolder v$VERSION" --template-theme "bootstrap"
+
+if [ "$OUTPUT" == "test" ]
+then
+    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="api-override.css">' $DESTINATION/*.html
+    cp $DESTINATION/../stylesheets/api-override.css $DESTINATION
+else
+    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/stylesheets/api-override.css">' $DESTINATION/*.html
+fi
+
+# Changes
+sed -i 's|navbar-default|navbar-inverse|' $DESTINATION/*.html
+sed -i 's|<span>Namespace</span>|<a>Namespace</a>|' $DESTINATION/index.html
+sed -i 's|<span>Class</span>|<a>Class</a>|' $DESTINATION/index.html
+sed -i 's|<span>Class</span>|<a>Class</a>|' $DESTINATION/class*.html
+sed -i 's|<span>Namespace</span>|<a>Namespace</a>|' $DESTINATION/namespace*.html
+sed -i 's|<span>Class</span>|<a>Class</a>|' $DESTINATION/namespace*.html
+sed -i 's|<span>Namespace</span>|<a>Namespace</a>|' $DESTINATION/source*.html
+sed -i 's|<span>Class</span>|<a>Class</a>|' $DESTINATION/source*.html
