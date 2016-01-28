@@ -6,7 +6,7 @@
 [![Waffle board](https://img.shields.io/badge/board-on%20waffle-blue.svg?style=flat-square)](https://waffle.io/mpaleo/scaffolder)
 [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-blue.svg?style=flat-square)](https://gitter.im/mpaleo/scaffolder)
 
-Remove the headache of creating over and over again the base code for most of your projects. Scaffolder is tailored following the principle that the development process must be a happy thing so, code and enjoy !
+Remove the headache of creating over and over again the base code for most of your projects.
 You are free to extend it the way you need. This package only generate things that you need to start, always keeping the code clean and abstract. Are you hungry ? Fork it !
 
 ## Installation
