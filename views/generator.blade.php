@@ -357,7 +357,7 @@
                                 @include($extensionView)
                             @endforeach
                         @else
-                            <p>There are no extension views to load</p>
+                            <p class="center-align">There are no extension views to load</p>
                         @endif
                     </div>
                 </div>
@@ -375,7 +375,7 @@
                                 @include($extensionView)
                             @endforeach
                         @else
-                            <p>There are no extension views to load</p>
+                            <p class="center-align">There are no extension views to load</p>
                         @endif
                     </div>
                 </div>
