@@ -1,7 +1,6 @@
 # Laravel scaffolder
 ![Scaffolder for laravel](https://cloud.githubusercontent.com/assets/5132565/11066969/17feb094-87a9-11e5-96cb-1402e4c7aaca.png)
 [![Software license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Quality score](https://img.shields.io/scrutinizer/g/mpaleo/scaffolder.svg?style=flat-square)](https://scrutinizer-ci.com/g/mpaleo/scaffolder)
 [![Laravel version](https://img.shields.io/badge/for%20laravel-5.2-orange.svg?style=flat-square)](https://github.com/laravel/framework/tree/5.2)
 [![Waffle board](https://img.shields.io/badge/board-on%20waffle-blue.svg?style=flat-square)](https://waffle.io/mpaleo/scaffolder)
 [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-blue.svg?style=flat-square)](https://gitter.im/mpaleo/scaffolder)
