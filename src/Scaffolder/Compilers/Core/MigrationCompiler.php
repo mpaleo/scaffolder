@@ -119,7 +119,7 @@ class MigrationCompiler extends AbstractCoreCompiler
     private function addFields($modelData)
     {
         // Default primary key
-        $fields = "\t\t\t\$table->increments('id');" . PHP_EOL . PHP_EOL;
+        $fields = $this->tab(3) . "\$table->increments('id');" . PHP_EOL . PHP_EOL;
 
         // Check primary key
         foreach ($modelData->fields as $field)
@@ -158,22 +158,22 @@ class MigrationCompiler extends AbstractCoreCompiler
             // Check indexes
             if ($field->index != 'none')
             {
-                $fields .= sprintf("\t\t\t\$table->%s('%s')%s->%s();" . PHP_EOL, $field->type->db, $field->name, $parsedModifiers, $field->index);
+                $fields .= sprintf($this->tab(3) . "\$table->%s('%s')%s->%s();" . PHP_EOL, $field->type->db, $field->name, $parsedModifiers, $field->index);
             }
             else
             {
-                $fields .= sprintf("\t\t\t\$table->%s('%s')%s;" . PHP_EOL, $field->type->db, $field->name, $parsedModifiers);
+                $fields .= sprintf($this->tab(3) . "\$table->%s('%s')%s;" . PHP_EOL, $field->type->db, $field->name, $parsedModifiers);
             }
 
             // Check foreign key
             if (!empty($field->foreignKey))
             {
                 $foreignKey = explode(':', $field->foreignKey);
-                $fields .= sprintf("\t\t\t\$table->foreign('%s')->references('%s')->on('%s');" . PHP_EOL . PHP_EOL, $field->name, $foreignKey[0], $foreignKey[1]);
+                $fields .= sprintf($this->tab(3) . "\$table->foreign('%s')->references('%s')->on('%s');" . PHP_EOL . PHP_EOL, $field->name, $foreignKey[0], $foreignKey[1]);
             }
         }
 
-        $fields .= PHP_EOL . "\t\t\t\$table->timestamps();" . PHP_EOL;
+        $fields .= PHP_EOL . $this->tab(3) . "\$table->timestamps();" . PHP_EOL;
 
         $this->stub = str_replace('{{fields}}', $fields, $this->stub);
 

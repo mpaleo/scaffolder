@@ -43,7 +43,7 @@ class ControllerCompiler extends AbstractCoreCompiler
                 $this->stub = $extension->runAfterControllerIsCompiled($this->stub, $modelData, $scaffolderConfig);
             }
 
-            $this->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
+            return $this->store($modelName, $scaffolderConfig, $this->stub, new FileToCompile(false, $hash));
         }
     }
 
@@ -82,7 +82,7 @@ class ControllerCompiler extends AbstractCoreCompiler
      *
      * @return $this
      */
-    private function setValidations($modelData)
+    protected function setValidations($modelData)
     {
         $fields = '';
         $firstIteration = true;
@@ -96,7 +96,7 @@ class ControllerCompiler extends AbstractCoreCompiler
             }
             else
             {
-                $fields .= sprintf("\t\t\t'%s' => '%s'," . PHP_EOL, $field->name, $field->validations);
+                $fields .= sprintf($this->tab(3) . "'%s' => '%s'," . PHP_EOL, $field->name, $field->validations);
             }
         }
 

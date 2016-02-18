@@ -12,8 +12,8 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     {{-- Materialize --}}
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
     <style>
         body,
@@ -156,8 +156,10 @@
             <a href="#" class="brand-logo">Laravel scaffolder</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder" target="_blank">GitHub</a></li>
-                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/wiki" target="_blank">Wiki</a></li>
-                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/issues" target="_blank">Help</a></li>
+                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/wiki" target="_blank">Wiki</a>
+                </li>
+                <li><a class="waves-effect" href="https://github.com/mPaleo/scaffolder/issues" target="_blank">Help</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -338,6 +340,21 @@
                                     <input id="routingPrefix" name="routing[prefix]" type="text"
                                            class="validate" value="scaffolder">
                                     <label for="routingPrefix">Prefix</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        {{-- API --}}
+                        <div id="api-section" class="section scrollspy">
+                            <h5>API</h5>
+
+                            <div class="row">
+                                <div class="input-field col m12 s12">
+                                    <input id="apiDomain" name="api[domain]" type="text"
+                                           class="validate" value="api.app.domain">
+                                    <label for="apiDomain">Domain</label>
                                 </div>
                             </div>
                         </div>
@@ -711,6 +728,7 @@
             <li><a href="#namespaces-section">Namespaces</a></li>
             <li><a href="#inheritances-section">Inheritances</a></li>
             <li><a href="#routing-section">Routing</a></li>
+            <li><a href="#api-section">API</a></li>
             <li><a href="#theme-extensions-section">Theme extensions</a></li>
             <li><a href="#extensions-section">Extensions</a></li>
             <li><a href="#model-generation-section">Model generation</a></li>
@@ -737,15 +755,15 @@
                 </a>
             </li>
             <li>
-                <a id="generateAndExecute" class="btn-floating waves-effect waves-light tooltipped amber"
-                   data-position="left" data-delay="0" data-tooltip="Generate and execute">
-                    <i class="material-icons">done</i>
+                <a id="scaffoldWithApi" class="btn-floating waves-effect waves-light tooltipped green" data-position="left"
+                   data-delay="0" data-tooltip="Scaffold with API">
+                    <i class="material-icons">done_all</i>
                 </a>
             </li>
             <li>
-                <a id="generate" class="btn-floating waves-effect waves-light tooltipped green" data-position="left"
-                   data-delay="0" data-tooltip="Generate files">
-                    <i class="material-icons">file_download</i>
+                <a id="scaffold" class="btn-floating waves-effect waves-light tooltipped green"
+                   data-position="left" data-delay="0" data-tooltip="Scaffold">
+                    <i class="material-icons">done</i>
                 </a>
             </li>
             <li>
@@ -755,6 +773,25 @@
                 </a>
             </li>
         </ul>
+    </div>
+
+    {{-- Scaffold output modal --}}
+    <div id="scaffold-output-modal" class="modal bottom-sheet modal-fixed-footer">
+        <div class="modal-content">
+            <ul id="scaffold-output-container" class="collection"></ul>
+        </div>
+        <div class="modal-footer">
+            <div class="row" style="display: flex; align-items: center; margin-bottom: 0;">
+                <div class="col s10">
+                    <div id="scaffold-output-progress" class="progress" style="display: none; margin-top: 15px;">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+                <div class="col s2">
+                    <a href="#!" class="modal-action modal-close waves-effect btn-flat">Close</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     {{-- Keyboard shortcuts modal --}}
@@ -777,11 +814,11 @@
             </tr>
             <tr>
                 <td>a + c</td>
-                <td>Generate files</td>
+                <td>Generate</td>
             </tr>
             <tr>
                 <td>a + d</td>
-                <td>Generate and execute</td>
+                <td>Generate with API</td>
             </tr>
             <tr>
                 <td>a + e</td>
@@ -790,7 +827,7 @@
             </tbody>
         </table>
         <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect btn-flat">Close</a>
+            <a href="#!" class="modal-action modal-close waves-effect btn-flat">Close</a>
         </div>
     </div>
 
@@ -853,7 +890,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function ()
+        {
             {{-- Ajax settings --}}
             $.ajaxSetup({
                 headers: {
@@ -876,13 +914,14 @@
             $('.modal-trigger').leanModal();
 
             {{-- Typeahead --}}
-            function initializeTypeahead() {
+            function initializeTypeahead()
+            {
                 var typeaheadValues = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace,
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: [
                         {{-- Validations --}}
-                        'accepted',
+                                'accepted',
                         'active_url',
                         'after:',
                         'alpha',
@@ -924,7 +963,7 @@
                         'url',
                         'alpha_dash',
                         {{-- Database types --}}
-                        'bigInteger',
+                                'bigInteger',
                         'binary',
                         'boolean',
                         'char',
@@ -950,13 +989,13 @@
                         'tinyInteger',
                         'timestamp',
                         {{-- UI types --}}
-                        'text',
+                                'text',
                         'textarea',
                         'dropDownList',
                         'checkBox',
                         'radioButton',
                         'number',
-                        'date',
+                        'date'
                     ]
                 });
 
@@ -973,7 +1012,8 @@
             initializeTypeahead();
 
             {{-- Clear all --}}
-            $('#clearAll').click(function (event) {
+            $('#clearAll').click(function (event)
+            {
                 event.preventDefault();
 
                 $('form')[0].reset();
@@ -981,35 +1021,93 @@
                 Materialize.toast('Data cleared', 3000);
             });
 
-            {{-- Generate app --}}
-            $('#generate').click(function (event) {
+            var scaffold = function (title, url)
+            {
+                var outputModal = $('#scaffold-output-modal');
+                var outputModalContent = $('#scaffold-output-modal .modal-content');
+                var outputContainer = $('#scaffold-output-container');
+                var outputProgress = $('#scaffold-output-progress');
+
+                outputProgress.fadeIn('slow');
+
+                $.post(url, $('form').serialize(), function ()
+                {
+                    outputContainer.append('<li class=\"collection-item teal-text\">' + title + '</li>');
+                    outputModal.openModal({dismissible: false});
+
+                    var lastStatusMessagePosition = 0;
+
+                    var getStatus = function ()
+                    {
+                        $.get('/scaffolder/status', function (data)
+                        {
+                            if (lastStatusMessagePosition != data.length)
+                            {
+                                for (var i = lastStatusMessagePosition; i < data.length; i++)
+                                {
+                                    outputContainer.append('<li class=\"collection-item\">' + data[i] + '</li>');
+                                }
+
+                                outputModalContent.animate({scrollTop: outputModalContent[0].scrollHeight}, 1000);
+
+                                lastStatusMessagePosition = data.length;
+
+                                if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
+                                {
+                                    setTimeout(function ()
+                                    {
+                                        getStatus();
+                                    }, 1500);
+                                }
+                                else
+                                {
+                                    outputProgress.fadeOut('slow');
+                                }
+                            }
+                            else
+                            {
+                                if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
+                                {
+                                    setTimeout(function ()
+                                    {
+                                        getStatus();
+                                    }, 3000);
+                                }
+                            }
+                        });
+                    };
+
+                    getStatus();
+                });
+            };
+
+            {{-- Scaffold --}}
+            $('#scaffold').click(function (event)
+            {
                 event.preventDefault();
-
-                $.post('/scaffolder/generate', $('form').serialize());
-
-                Materialize.toast('Generating app', 3000);
+                scaffold('Scaffolding', '/scaffolder/generate');
             });
 
-            {{-- Generate and execute app --}}
-            $('#generateAndExecute').click(function (event) {
+            {{-- Scaffold with API --}}
+            $('#scaffoldWithApi').click(function (event)
+            {
                 event.preventDefault();
-
-                $.post('/scaffolder/generate-and-execute', $('form').serialize());
-
-                Materialize.toast('Generating and executing app ...', 4000);
+                scaffold('Scaffolding with API', '/scaffolder/generate-with-api');
             });
 
             var modelId = 1;
 
             {{-- Add model --}}
-            $('#addModel').click(function (event) {
+            $('#addModel').click(function (event)
+            {
                 event.preventDefault();
 
                 modelId++;
 
                 $('<div id=\'modelId-' + modelId + '\'>').load('/scaffolder/add-model', {
                     'modelId': modelId
-                }, function () {
+                }, function ()
+                {
                     $('#models-collection').append($(this));
 
                     $('.typeahead').typeahead('destroy');
@@ -1020,13 +1118,15 @@
                 Materialize.toast('Model added', 3000);
             });
 
-            addField = function (modelId) {
+            var addField = function (modelId)
+            {
                 var fieldId = $('#modelId-' + modelId + ' .fields > div').length;
 
                 $('<div id=\'field-' + modelId + '-' + fieldId + '\' class=\'row z-depth-1\'>').load('/scaffolder/add-field', {
                     'modelId': modelId,
                     'fieldId': fieldId
-                }, function () {
+                }, function ()
+                {
                     $('#modelId-' + modelId + ' .fields').append($(this));
 
                     $('.typeahead').typeahead('destroy');
@@ -1037,11 +1137,13 @@
                 Materialize.toast('Field added', 3000);
             };
 
-            removeModel = function (modelId) {
+            var removeModel = function (modelId)
+            {
                 $('#modelId-' + modelId).remove();
             };
 
-            removeField = function (modelId, fieldId) {
+            var removeField = function (modelId, fieldId)
+            {
                 $('#field-' + modelId + '-' + fieldId).remove();
             };
         });

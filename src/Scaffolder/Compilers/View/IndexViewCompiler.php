@@ -104,7 +104,7 @@ class IndexViewCompiler extends AbstractViewCompiler
                 }
                 else
                 {
-                    $fields .= sprintf("\t\t\t\t{ data: '%s', name: '%s' }," . PHP_EOL, $field->name, $field->name);
+                    $fields .= sprintf($this->tab(4) . "{ data: '%s', name: '%s' }," . PHP_EOL, $field->name, $field->name);
                 }
             }
         }
@@ -139,7 +139,7 @@ class IndexViewCompiler extends AbstractViewCompiler
                 }
                 else
                 {
-                    $fields .= sprintf("\t\t\t<th>%s</th>" . PHP_EOL, ucfirst($field->name));
+                    $fields .= sprintf($this->tab(3) . "<th>%s</th>" . PHP_EOL, ucfirst($field->name));
                 }
             }
         }

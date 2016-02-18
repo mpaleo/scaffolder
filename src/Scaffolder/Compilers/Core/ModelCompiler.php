@@ -98,7 +98,7 @@ class ModelCompiler extends AbstractCoreCompiler
      *
      * @return $this
      */
-    private function addFillable($modelData)
+    protected function addFillable($modelData)
     {
         $fields = '';
         $firstIteration = true;
@@ -112,7 +112,7 @@ class ModelCompiler extends AbstractCoreCompiler
             }
             else
             {
-                $fields .= sprintf("\t\t'%s'," . PHP_EOL, $field->name);
+                $fields .= sprintf($this->tab(2) . "'%s'," . PHP_EOL, $field->name);
             }
         }
 
@@ -129,7 +129,7 @@ class ModelCompiler extends AbstractCoreCompiler
      *
      * @return $this
      */
-    private function replaceTableName(stdClass $scaffolderConfig, $modelName)
+    protected function replaceTableName(stdClass $scaffolderConfig, $modelName)
     {
         $tableName = isset($scaffolderConfig->tableName) && !empty($scaffolderConfig->tableName) ? $scaffolderConfig->tableName : $modelName . 's';
 
@@ -145,7 +145,7 @@ class ModelCompiler extends AbstractCoreCompiler
      *
      * @return $this
      */
-    private function setPrimaryKey($modelData)
+    protected function setPrimaryKey($modelData)
     {
         $primaryKey = '// Using default primary key' . PHP_EOL;
 

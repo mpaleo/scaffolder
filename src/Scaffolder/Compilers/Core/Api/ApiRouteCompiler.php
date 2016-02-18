@@ -1,14 +1,13 @@
 <?php
 
-namespace Scaffolder\Compilers\Core;
+namespace Scaffolder\Compilers\Core\Api;
 
 use Illuminate\Support\Facades\File;
-use Scaffolder\Compilers\AbstractCoreCompiler;
+use Scaffolder\Compilers\Core\RouteCompiler;
 use Scaffolder\Support\FileToCompile;
-use Scaffolder\Support\PathParser;
 use stdClass;
 
-class RouteCompiler extends AbstractCoreCompiler
+class ApiRouteCompiler extends RouteCompiler
 {
     /**
      * Compiles a route.
@@ -46,7 +45,6 @@ class RouteCompiler extends AbstractCoreCompiler
         $this->stub = $stub;
 
         $this->replaceRoutes($compiledRoutes)
-            ->replacePrefix($scaffolderConfig->routing->prefix)
             ->store(null, $scaffolderConfig, $this->stub, new FileToCompile(null, null));
 
         return $this->stub;
@@ -64,49 +62,6 @@ class RouteCompiler extends AbstractCoreCompiler
      */
     protected function store($modelName, stdClass $scaffolderConfig, $compiled, FileToCompile $fileToCompile)
     {
-        File::append(PathParser::parse($scaffolderConfig->paths->routes), PHP_EOL . $compiled);
-    }
-
-    /**
-     * Replace the resource.
-     *
-     * @param $modelName
-     *
-     * @return $this
-     */
-    protected function replaceResource($modelName)
-    {
-        $this->stub = str_replace('{{resource_lw}}', strtolower($modelName), $this->stub);
-        $this->stub = str_replace('{{resource}}', $modelName, $this->stub);
-
-        return $this;
-    }
-
-    /**
-     * Replace compiled routes.
-     *
-     * @param $compiledRoutes
-     *
-     * @return $this
-     */
-    protected function replaceRoutes($compiledRoutes)
-    {
-        $this->stub = str_replace('{{routes}}', $compiledRoutes, $this->stub);
-
-        return $this;
-    }
-
-    /**
-     * Replace the prefix.
-     *
-     * @param $prefix
-     *
-     * @return $this
-     */
-    private function replacePrefix($prefix)
-    {
-        $this->stub = str_replace('{{route_prefix}}', $prefix, $this->stub);
-
-        return $this;
+        File::append(base_path('../' . strtolower(str_replace(' ', '-', $scaffolderConfig->name . '-api'))) . '/app/Http/routes.php', PHP_EOL . $compiled);
     }
 }

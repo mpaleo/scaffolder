@@ -1,8 +1,8 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Models;
 
-use {{namespace_model_extend}} as Model;
+use Illuminate\Database\Eloquent\Model as Model;
 
 class {{class_name}} extends Model
 {
@@ -20,7 +20,7 @@ class {{class_name}} extends Model
      * @var array
      */
     public $fillable = [
-        
+
         {{fillable}}
     ];
 }

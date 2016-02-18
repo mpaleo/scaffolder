@@ -18,11 +18,16 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9"
+        "php": ">=5.5.9",
+        "mpaleo/view-tags": "dev-master",
+        "illuminate/support": "5.2.*",
+        "laravelcollective/html": "5.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
         "orchestra/testbench": "~3.0",
+        "mpaleo/view-tags": "dev-master",
+        "illuminate/support": "5.2.*",
         "laravelcollective/html": "5.2.*"
     },
     "autoload": {

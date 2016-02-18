@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 Route::get('scaffolder/generator', function ()
@@ -43,9 +44,26 @@ Route::post('scaffolder/generate', function (Request $request)
         File::put(base_path('scaffolder-config/models/' . $modelName . '.json'),
             json_encode($model, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
+
+    // Return HTTP 202
+    header('Status: 202 Processing input');
+    header('Connection: Close');
+    header('Content-Encoding: none');
+    header('Content-Length: 0');
+    ob_start();
+    echo str_pad('', 4096);
+    ob_flush();
+    flush();
+
+    Cache::forever('scaffolder-status', serialize(['Running artisan command ...']));
+
+    // Execute artisan command
+    Artisan::call('scaffolder:generate', [
+        '--webExecution' => true
+    ]);
 });
 
-Route::post('scaffolder/generate-and-execute', function (Request $request)
+Route::post('scaffolder/generate-with-api', function (Request $request)
 {
     $models = $request->only('models');
 
@@ -68,8 +86,26 @@ Route::post('scaffolder/generate-and-execute', function (Request $request)
             json_encode($model, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 
-    // Execute artisan command
-    $exitCode = Artisan::call('mpaleo.scaffolder:generate');
+    // Return HTTP 202
+    header('Status: 202 Processing input');
+    header('Connection: Close');
+    header('Content-Encoding: none');
+    header('Content-Length: 0');
+    ob_start();
+    echo str_pad('', 4096);
+    ob_flush();
+    flush();
 
-    return response()->json(['exitCode' => $exitCode]);
+    Cache::forever('scaffolder-status', serialize(['Running artisan command ...']));
+
+    // Execute artisan command
+    Artisan::call('scaffolder:generate', [
+        '--api' => true,
+        '--webExecution' => true
+    ]);
+});
+
+Route::get('scaffolder/status', function ()
+{
+    return response()->json(unserialize(Cache::get('scaffolder-status')));
 });

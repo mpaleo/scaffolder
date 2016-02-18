@@ -27,5 +27,8 @@
     },
     "routing": {
         "prefix": "scaffolder"
+    },
+    "api": {
+        "domain": "cool.app.domain"
     }
 }

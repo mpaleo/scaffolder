@@ -5,6 +5,7 @@ namespace Scaffolder;
 use Illuminate\Support\ServiceProvider;
 use Scaffolder\Commands\ClearCacheCommand;
 use Scaffolder\Commands\GeneratorCommand;
+use Scaffolder\Commands\InitializeApiCommand;
 
 class ScaffolderServiceProvider extends ServiceProvider
 {
@@ -44,9 +45,15 @@ class ScaffolderServiceProvider extends ServiceProvider
             return new ClearCacheCommand();
         });
 
+        $this->app->singleton('scaffolder.command.api.initialize', function ()
+        {
+            return new InitializeApiCommand();
+        });
+
         $this->commands([
             'scaffolder.command.generate',
-            'scaffolder.command.cache.clear'
+            'scaffolder.command.cache.clear',
+            'scaffolder.command.api.initialize'
         ]);
     }
 }

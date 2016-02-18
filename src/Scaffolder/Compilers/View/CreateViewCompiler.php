@@ -103,7 +103,7 @@ class CreateViewCompiler extends AbstractViewCompiler
             }
             else
             {
-                $fields .= "\t" . self::getInputFor($field) . PHP_EOL;
+                $fields .= $this->tab(1) . self::getInputFor($field) . PHP_EOL;
             }
         }
 

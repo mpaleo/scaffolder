@@ -104,7 +104,7 @@ class EditViewCompiler extends AbstractViewCompiler
             }
             else
             {
-                $fields .= "\t" . self::getInputFor($field) . PHP_EOL;
+                $fields .= $this->tab(2) . self::getInputFor($field) . PHP_EOL;
             }
         }
 

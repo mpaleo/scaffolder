@@ -59,4 +59,16 @@ abstract class AbstractCompiler
 
         return $this;
     }
+
+    /**
+     * Tab helper.
+     *
+     * @param $size
+     *
+     * @return string
+     */
+    protected function tab($size)
+    {
+        return str_repeat('    ', $size);
+    }
 }
