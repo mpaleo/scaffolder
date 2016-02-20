@@ -1,13 +1,13 @@
 <div class="col l6 s10 offset-l3 offset-s1">
 
     {{-- Add field FAB --}}
-    <a onclick="addField({{ $modelId }})"
+    <a onclick="$.addField({{ $modelId }})"
        class="btn-floating waves-effect waves-light pink darken-1 add-field-fab" data-position="right">
         <i class="material-icons">add</i>
     </a>
 
     {{-- Remove model FAB --}}
-    <a onclick="removeModel({{ $modelId }})"
+    <a onclick="$.removeModel({{ $modelId }})"
        class="btn-floating waves-effect waves-light pink darken-1 remove-model-fab" data-position="right">
         <i class="material-icons">remove</i>
     </a>
@@ -80,7 +80,7 @@
                     <div id="field-{{ $modelId }}-0" class="row z-depth-1">
 
                         {{-- Remove field FAB--}}
-                        <a onclick="removeField({{ $modelId }}, 0)"
+                        <a onclick="$.removeField({{ $modelId }}, 0)"
                            class="btn-floating waves-effect waves-light pink darken-1 remove-field-fab"
                            data-position="right"><i
                                     class="material-icons">remove</i></a>
@@ -187,7 +187,7 @@
                     <div id="field-{{ $modelId }}-1" class="row z-depth-1">
 
                         {{-- Remove field FAB --}}
-                        <a onclick="removeField({{ $modelId }}, 1)"
+                        <a onclick="$.removeField({{ $modelId }}, 1)"
                            class="btn-floating waves-effect waves-light pink darken-1 remove-field-fab"
                            data-position="right"><i
                                     class="material-icons">remove</i></a>

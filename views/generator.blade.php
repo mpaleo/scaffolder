@@ -6,14 +6,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- jQuery --}}
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     {{-- Material icons --}}
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     {{-- Materialize --}}
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
     <style>
         body,
@@ -389,14 +389,14 @@
                         <div class="col l6 s10 offset-l3 offset-s1">
 
                             {{-- Add field FAB --}}
-                            <a onclick="addField(0)"
+                            <a onclick="$.addField(0)"
                                class="btn-floating waves-effect waves-light pink darken-1 add-field-fab"
                                data-delay="0">
                                 <i class="material-icons">add</i>
                             </a>
 
                             {{-- Remove model FAB --}}
-                            <a onclick="removeModel(0)"
+                            <a onclick="$.removeModel(0)"
                                class="btn-floating waves-effect waves-light pink darken-1 remove-model-fab"
                                data-delay="0">
                                 <i class="material-icons">remove</i>
@@ -470,7 +470,7 @@
                                             <div id="field-0-0" class="row z-depth-1">
 
                                                 {{-- Remove field FAB --}}
-                                                <a onclick="removeField(0, 0)"
+                                                <a onclick="$.removeField(0, 0)"
                                                    class="btn-floating waves-effect waves-light pink darken-1 remove-field-fab"
                                                    data-delay="0">
                                                     <i class="material-icons">remove</i>
@@ -579,7 +579,7 @@
                                             <div id="field-0-1" class="row z-depth-1">
 
                                                 {{-- Remove field FAB --}}
-                                                <a onclick="removeField(0, 1)"
+                                                <a onclick="$.removeField(0, 1)"
                                                    class="btn-floating waves-effect waves-light pink darken-1 remove-field-fab"
                                                    data-delay="0">
                                                     <i class="material-icons">remove</i>
@@ -863,264 +863,348 @@
     </footer>
 
     {{-- Typeahead --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 
     <script>
         $(document).ready(function ()
         {
-            {{-- Ajax settings --}}
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            /*
+             |--------------------------------------------------------------------------
+             | User interface
+             |--------------------------------------------------------------------------
+             */
 
-            {{-- Select --}}
-            $('select').material_select();
-
-            {{-- Scroll spy --}}
-            $('.scrollspy').scrollSpy();
-
-            {{-- Pushpin --}}
-            $('asside').pushpin({
-                top: 100
-            });
-
-            {{-- Modal --}}
-            $('.modal-trigger').leanModal();
-
-            {{-- Typeahead --}}
-            function initializeTypeahead()
+            function UI()
             {
-                var typeaheadValues = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.whitespace,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: [
-                        {{-- Validations --}}
-                                'accepted',
-                        'active_url',
-                        'after:',
-                        'alpha',
-                        'alpha_dash',
-                        'alpha_num',
-                        'array',
-                        'before:',
-                        'between:',
-                        'boolean',
-                        'confirmed',
-                        'date',
-                        'date_format',
-                        'different',
-                        'digits',
-                        'digits_between:',
-                        'email',
-                        'exists:',
-                        'image',
-                        'in:',
-                        'integer',
-                        'ip',
-                        'json',
-                        'max:',
-                        'mimes:',
-                        'min:',
-                        'not_in:',
-                        'numeric',
-                        'regex:',
-                        'required',
-                        'required_if:',
-                        'required_with',
-                        'required_with_all:',
-                        'required_without:',
-                        'same:',
-                        'size:',
-                        'string',
-                        'timezone',
-                        'unique:',
-                        'url',
-                        'alpha_dash',
-                        {{-- Database types --}}
-                                'bigInteger',
-                        'binary',
-                        'boolean',
-                        'char',
-                        'date',
-                        'dateTime',
-                        'decimal',
-                        'double',
-                        'enum',
-                        'float',
-                        'integer',
-                        'json',
-                        'jsonb',
-                        'longText',
-                        'mediumInteger',
-                        'mediumText',
-                        'morphs',
-                        'nullableTimestamps',
-                        'rememberToken',
-                        'smallInteger',
-                        'string',
-                        'text',
-                        'time',
-                        'tinyInteger',
-                        'timestamp',
-                        {{-- UI types --}}
-                                'text',
-                        'textarea',
-                        'dropDownList',
-                        'checkBox',
-                        'radioButton',
-                        'number',
-                        'date'
-                    ]
-                });
-
-                $('.typeahead').typeahead({
-                    hint: false,
-                    highlight: true,
-                    minLength: 1
-                }, {
-                    name: 'typeahead',
-                    source: typeaheadValues
-                }).unwrap();
+                // Content
+                this.outputModalContent = $('#scaffold-output-modal .modal-content');
+                // Collections
+                this.modelsCollection = $('#models-collection');
+                this.outputCollection = $('#scaffold-output-container');
+                // Components
+                this.formComponent = $('form');
+                this.selectComponent = $('select');
+                this.assideComponent = $('asside');
+                this.typeaheadComponent = $('.typeahead');
+                this.scrollSpyComponent = $('.scrollspy');
+                this.outputModalComponent = $('#scaffold-output-modal');
+                this.outputProgressComponent = $('#scaffold-output-progress');
+                // Buttons
+                this.clearAllButton = $('#clearAll');
+                this.scaffoldButton = $('#scaffold');
+                this.scaffoldWithApiButton = $('#scaffoldWithApi');
+                this.addModelButton = $('#addModel');
+                // Triggers
+                this.modalTrigger = $('.modal-trigger');
             }
 
-            initializeTypeahead();
+            /*
+             |--------------------------------------------------------------------------
+             | Http communication
+             |--------------------------------------------------------------------------
+             */
 
-            {{-- Clear all --}}
-            $('#clearAll').click(function (event)
+            function Http(ui)
             {
-                event.preventDefault();
+                var self = this;
+                this.ui = ui;
 
-                $('form')[0].reset();
-
-                Materialize.toast('Data cleared', 3000);
-            });
-
-            var scaffold = function (title, url)
-            {
-                var outputModal = $('#scaffold-output-modal');
-                var outputModalContent = $('#scaffold-output-modal .modal-content');
-                var outputContainer = $('#scaffold-output-container');
-                var outputProgress = $('#scaffold-output-progress');
-
-                outputProgress.fadeIn('slow');
-
-                $.post(url, $('form').serialize(), function ()
+                this.scaffold = function (title, url)
                 {
-                    outputContainer.append('<li class=\"collection-item teal-text\">' + title + '</li>');
-                    outputModal.openModal({dismissible: false});
+                    self.ui.outputProgressComponent.fadeIn('slow');
 
-                    var lastStatusMessagePosition = 0;
-
-                    var getStatus = function ()
+                    $.post(url, self.ui.formComponent.serialize(), function ()
                     {
-                        $.get('/scaffolder/status', function (data)
+                        self.ui.outputCollection.append('<li class=\"collection-item teal-text\">' + title + '</li>');
+                        self.ui.outputModalContent.animate({scrollTop: self.ui.outputModalContent[0].scrollHeight}, 1000);
+                        self.ui.outputModalComponent.openModal({dismissible: false});
+
+                        var lastStatusMessagePosition = 0;
+
+                        var getStatus = function ()
                         {
-                            if (lastStatusMessagePosition != data.length)
+                            $.get('/scaffolder/status', function (data)
                             {
-                                for (var i = lastStatusMessagePosition; i < data.length; i++)
+                                if (lastStatusMessagePosition != data.length)
                                 {
-                                    outputContainer.append('<li class=\"collection-item\">' + data[i] + '</li>');
-                                }
-
-                                outputModalContent.animate({scrollTop: outputModalContent[0].scrollHeight}, 1000);
-
-                                lastStatusMessagePosition = data.length;
-
-                                if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
-                                {
-                                    setTimeout(function ()
+                                    for (var i = lastStatusMessagePosition; i < data.length; i++)
                                     {
-                                        getStatus();
-                                    }, 1500);
+                                        self.ui.outputCollection.append('<li class=\"collection-item\">' + data[i] + '</li>');
+                                    }
+
+                                    self.ui.outputModalContent.animate({scrollTop: self.ui.outputModalContent[0].scrollHeight}, 1000);
+
+                                    lastStatusMessagePosition = data.length;
+
+                                    if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
+                                    {
+                                        setTimeout(function ()
+                                        {
+                                            getStatus();
+                                        }, 1500);
+                                    }
+                                    else
+                                    {
+                                        self.ui.outputProgressComponent.fadeOut('slow');
+                                    }
                                 }
                                 else
                                 {
-                                    outputProgress.fadeOut('slow');
-                                }
-                            }
-                            else
-                            {
-                                if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
-                                {
-                                    setTimeout(function ()
+                                    if (data[data.length - 1] != 'Done' && data[data.length - 1] != 'Error')
                                     {
-                                        getStatus();
-                                    }, 3000);
+                                        setTimeout(function ()
+                                        {
+                                            getStatus();
+                                        }, 3000);
+                                    }
                                 }
-                            }
+                            });
+                        };
+
+                        getStatus();
+                    });
+                }
+            }
+
+            /*
+             |--------------------------------------------------------------------------
+             | Application actions
+             |--------------------------------------------------------------------------
+             */
+
+            function App(http, ui)
+            {
+                var self = this;
+                this.modelId = 1;
+                this.http = http;
+                this.ui = ui;
+
+                this.init = function ()
+                {
+                    // Ajax settings
+                    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
+                    // Select
+                    self.ui.selectComponent.material_select();
+
+                    // Scrollspy
+                    self.ui.scrollSpyComponent.scrollSpy();
+
+                    // Pushpin
+                    self.ui.assideComponent.pushpin({
+                        top: 100
+                    });
+
+                    // Modal
+                    self.ui.modalTrigger.leanModal();
+                }
+
+                this.bindActions = function ()
+                {
+                    // Clear all
+                    self.ui.clearAllButton.click(function (event)
+                    {
+                        event.preventDefault();
+
+                        self.ui.formComponent[0].reset();
+
+                        Materialize.toast('Data cleared', 3000);
+                    });
+
+                    // Scaffold
+                    self.ui.scaffoldButton.click({http: self.http}, function (event)
+                    {
+                        event.preventDefault();
+                        http.scaffold('Scaffolding', '/scaffolder/generate');
+                    });
+
+                    // Scaffold with API
+                    self.ui.scaffoldWithApiButton.click({http: self.http}, function (event)
+                    {
+                        event.preventDefault();
+                        http.scaffold('Scaffolding with API', '/scaffolder/generate-with-api');
+                    });
+
+                    // Add model
+                    self.ui.addModelButton.click(function (event)
+                    {
+                        event.preventDefault();
+
+                        self.modelId++;
+
+                        $('<div id=\'modelId-' + self.modelId + '\'>').load('/scaffolder/add-model', {
+                            'modelId': self.modelId
+                        }, function ()
+                        {
+                            self.ui.modelsCollection.append($(this));
+
+                            self.ui.typeaheadComponent.typeahead('destroy');
+
+                            self.initTypeahead();
                         });
-                    };
 
-                    getStatus();
-                });
-            };
+                        Materialize.toast('Model added', 3000);
+                    });
+                }
 
-            {{-- Scaffold --}}
-            $('#scaffold').click(function (event)
-            {
-                event.preventDefault();
-                scaffold('Scaffolding', '/scaffolder/generate');
-            });
-
-            {{-- Scaffold with API --}}
-            $('#scaffoldWithApi').click(function (event)
-            {
-                event.preventDefault();
-                scaffold('Scaffolding with API', '/scaffolder/generate-with-api');
-            });
-
-            var modelId = 1;
-
-            {{-- Add model --}}
-            $('#addModel').click(function (event)
-            {
-                event.preventDefault();
-
-                modelId++;
-
-                $('<div id=\'modelId-' + modelId + '\'>').load('/scaffolder/add-model', {
-                    'modelId': modelId
-                }, function ()
+                this.addField = function (modelId)
                 {
-                    $('#models-collection').append($(this));
+                    var fieldId = $('#modelId-' + modelId + ' .fields > div').length;
 
-                    $('.typeahead').typeahead('destroy');
+                    $('<div id=\'field-' + modelId + '-' + fieldId + '\' class=\'row z-depth-1\'>').load('/scaffolder/add-field', {
+                        'modelId': modelId,
+                        'fieldId': fieldId
+                    }, function ()
+                    {
+                        $('#modelId-' + modelId + ' .fields').append($(this));
 
-                    initializeTypeahead();
-                });
+                        self.ui.typeaheadComponent.typeahead('destroy');
 
-                Materialize.toast('Model added', 3000);
-            });
+                        self.initTypeahead();
+                    });
 
-            var addField = function (modelId)
-            {
-                var fieldId = $('#modelId-' + modelId + ' .fields > div').length;
+                    Materialize.toast('Field added', 3000);
+                }
 
-                $('<div id=\'field-' + modelId + '-' + fieldId + '\' class=\'row z-depth-1\'>').load('/scaffolder/add-field', {
-                    'modelId': modelId,
-                    'fieldId': fieldId
-                }, function ()
+                this.removeModel = function (modelId)
                 {
-                    $('#modelId-' + modelId + ' .fields').append($(this));
+                    $('#modelId-' + modelId).remove();
+                }
 
-                    $('.typeahead').typeahead('destroy');
+                this.removeField = function (modelId, fieldId)
+                {
+                    $('#field-' + modelId + '-' + fieldId).remove();
+                }
 
-                    initializeTypeahead();
-                });
+                this.initTypeahead = function ()
+                {
+                    var typeaheadValues = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.whitespace,
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        local: [
+                            // Validations
+                            'accepted',
+                            'active_url',
+                            'after:',
+                            'alpha',
+                            'alpha_dash',
+                            'alpha_num',
+                            'array',
+                            'before:',
+                            'between:',
+                            'boolean',
+                            'confirmed',
+                            'date',
+                            'date_format',
+                            'different',
+                            'digits',
+                            'digits_between:',
+                            'email',
+                            'exists:',
+                            'image',
+                            'in:',
+                            'integer',
+                            'ip',
+                            'json',
+                            'max:',
+                            'mimes:',
+                            'min:',
+                            'not_in:',
+                            'numeric',
+                            'regex:',
+                            'required',
+                            'required_if:',
+                            'required_with',
+                            'required_with_all:',
+                            'required_without:',
+                            'same:',
+                            'size:',
+                            'string',
+                            'timezone',
+                            'unique:',
+                            'url',
+                            'alpha_dash',
+                            // Database types
+                            'bigInteger',
+                            'binary',
+                            'boolean',
+                            'char',
+                            'date',
+                            'dateTime',
+                            'decimal',
+                            'double',
+                            'enum',
+                            'float',
+                            'integer',
+                            'json',
+                            'jsonb',
+                            'longText',
+                            'mediumInteger',
+                            'mediumText',
+                            'morphs',
+                            'nullableTimestamps',
+                            'rememberToken',
+                            'smallInteger',
+                            'string',
+                            'text',
+                            'time',
+                            'tinyInteger',
+                            'timestamp',
+                            // UI types
+                            'text',
+                            'textarea',
+                            'dropDownList',
+                            'checkBox',
+                            'radioButton',
+                            'number',
+                            'date'
+                        ]
+                    });
 
-                Materialize.toast('Field added', 3000);
+                    self.ui.typeaheadComponent.typeahead({
+                        hint: false,
+                        highlight: true,
+                        minLength: 1
+                    }, {
+                        name: 'typeahead',
+                        source: typeaheadValues
+                    }).unwrap();
+                }
+            }
+
+            /*
+             |--------------------------------------------------------------------------
+             | Application setup
+             |--------------------------------------------------------------------------
+             */
+
+            var ui = new UI();
+            var http = new Http(ui);
+            var app = new App(http, ui);
+
+            app.init();
+            app.bindActions();
+            app.initTypeahead();
+
+            /*
+             |--------------------------------------------------------------------------
+             | Expose UI methods
+             |--------------------------------------------------------------------------
+             */
+
+            $.addField = function (modelId)
+            {
+                app.addField(modelId);
             };
 
-            var removeModel = function (modelId)
+            $.removeModel = function (modelId)
             {
-                $('#modelId-' + modelId).remove();
+                app.removeModel(modelId);
             };
 
-            var removeField = function (modelId, fieldId)
+            $.removeField = function (modelId, fieldId)
             {
-                $('#field-' + modelId + '-' + fieldId).remove();
+                app.removeField(modelId, fieldId);
             };
         });
     </script>

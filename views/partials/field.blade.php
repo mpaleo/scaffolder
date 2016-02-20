@@ -1,4 +1,4 @@
-<a onclick="removeField({{ $modelId }}, {{ $fieldId }})"
+<a onclick="$.removeField({{ $modelId }}, {{ $fieldId }})"
    class="btn-floating waves-effect waves-light pink darken-1 remove-field-fab"
    data-position="right" data-delay="0"><i
             class="material-icons">remove</i></a>
