@@ -26,10 +26,10 @@ class InitializeApiCommand extends BaseCommand
     {
         $name = $this->argument('name');
         $domain = $this->argument('domain');
+        $webExecution = $this->option('webExecution');
 
         try
         {
-            $webExecution = $this->option('webExecution');
             $workingPath = base_path('../');
             $outputFolder = strtolower(str_replace(' ', '-', $name . '-api'));
 
@@ -84,7 +84,6 @@ class InitializeApiCommand extends BaseCommand
         catch (\Exception $exception)
         {
             $this->writeStatus('Error', $webExecution);
-            Log::error($exception->getMessage());
         }
     }
 }

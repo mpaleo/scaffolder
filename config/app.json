@@ -1,11 +1,7 @@
 {
     "name": "Starter app",
     "userInterface": {
-        "pageTitle": "Cool application",
-        "theme": {
-            "primaryColor": "indigo",
-            "accentColor": "pink"
-        }
+        "pageTitle": "Cool application"
     },
     "paths": {
         "migrations": "base:database/migrations/",
