@@ -19,8 +19,8 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "mpaleo/view-tags": "dev-master",
-        "mpaleo/scaffolder-support": "dev-master",
+        "mpaleo/view-tags": "~1.0",
+        "mpaleo/scaffolder-support": "~1.0",
         "illuminate/support": "5.2.*",
         "laravelcollective/html": "5.2.*"
     },
