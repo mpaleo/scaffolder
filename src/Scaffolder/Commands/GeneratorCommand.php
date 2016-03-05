@@ -3,6 +3,7 @@
 namespace Scaffolder\Commands;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Scaffolder\Compilers\Core\Api\ApiControllerCompiler;
 use Scaffolder\Compilers\Core\Api\ApiModelCompiler;
 use Scaffolder\Compilers\Core\Api\ApiRouteCompiler;
@@ -303,6 +304,7 @@ class GeneratorCommand extends BaseCommand
         catch (\Exception $exception)
         {
             $this->writeStatus('Error', $webExecution);
+            Log::error($exception->getMessage());
         }
     }
 }

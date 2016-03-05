@@ -3,6 +3,7 @@
 namespace Scaffolder\Commands;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Scaffolder\Support\Composer;
 
 class InitializeApiCommand extends BaseCommand
@@ -84,6 +85,7 @@ class InitializeApiCommand extends BaseCommand
         catch (\Exception $exception)
         {
             $this->writeStatus('Error', $webExecution);
+            Log::error($exception->getMessage());
         }
     }
 }
