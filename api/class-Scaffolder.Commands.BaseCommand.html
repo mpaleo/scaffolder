@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Scaffolder\Support\PathParser | Scaffolder v1.0.0</title>
+	<title>Class Scaffolder\Commands\BaseCommand | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -14,7 +14,7 @@
 	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+				<a href="index.html" class="navbar-brand">Scaffolder v2.0.0</a>
 			</div>
 			<div class="collapse navbar-collapse">
 
@@ -28,7 +28,7 @@
 
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="namespace-Scaffolder.Support.html" title="Summary of Scaffolder\Support"><span>Namespace</span></a>
+						<a href="namespace-Scaffolder.Commands.html" title="Summary of Scaffolder\Commands"><span>Namespace</span></a>
 					</li>
 					<li class="active">
 <a>Class</a>					</li>
@@ -53,7 +53,7 @@
 							Scaffolder<span></span>
 						</a>
 							<ul>
-					<li>
+					<li class="active">
 						<a href="namespace-Scaffolder.Commands.html">
 							Commands						</a>
 							</li>
@@ -64,8 +64,14 @@
 							<ul>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Core.html">
-							Core						</a>
+							Core<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
+							Api						</a>
 							</li>
+								</ul></li>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
@@ -73,16 +79,6 @@
 					<li>
 						<a href="namespace-Scaffolder.Compilers.View.html">
 							View						</a>
-							</li>
-								</ul></li>
-					<li class="active">
-						<a href="namespace-Scaffolder.Support.html">
-							Support<span></span>
-						</a>
-							<ul>
-					<li>
-						<a href="namespace-Scaffolder.Support.Contracts.html">
-							Contracts						</a>
 							</li>
 								</ul></li></ul></li>
 			</ul>
@@ -92,17 +88,13 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Scaffolder.Support.Directory.html">Directory</a></li>
-				<li><a href="class-Scaffolder.Support.FileToCompile.html">FileToCompile</a></li>
-				<li><a href="class-Scaffolder.Support.Json.html">Json</a></li>
-				<li class="active"><a href="class-Scaffolder.Support.PathParser.html">PathParser</a></li>
+				<li class="active"><a href="class-Scaffolder.Commands.BaseCommand.html">BaseCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.ClearCacheCommand.html">ClearCacheCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.GeneratorCommand.html">GeneratorCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.InitializeApiCommand.html">InitializeApiCommand</a></li>
 			</ul>
 
 
-			<h3>Traits</h3>
-			<ul>
-				<li><a href="class-Scaffolder.Support.InputTypeResolverTrait.html">InputTypeResolverTrait</a></li>
-			</ul>
 
 
 
@@ -115,12 +107,32 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class PathParser</h1>
+	<h1>Class BaseCommand</h1>
 
 
 
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+Illuminate\Console\Command
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Scaffolder\Commands\BaseCommand</span></b>			
+			
+			
+		</dd>
+	</dl>
 
 
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-Scaffolder.Commands.GeneratorCommand.html">Scaffolder\Commands\GeneratorCommand</a></code>, 
+			<code><a href="class-Scaffolder.Commands.InitializeApiCommand.html">Scaffolder\Commands\InitializeApiCommand</a></code>
+		</p>
+	</div>
 
 
 
@@ -128,12 +140,12 @@
 
 
 	<div class="alert alert-info">
+		<b>Abstract</b><br>
 		
-		
-		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Support.html">Support</a><br>
+		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Commands.html">Commands</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-Scaffolder.Support.PathParser.html#5-56" title="Go to source code">Scaffolder/Support/PathParser.php</a>
+			<b>Located at</b> <a href="source-class-Scaffolder.Commands.BaseCommand.html#8-29" title="Go to source code">Scaffolder/Commands/BaseCommand.php</a>
 		<br>
 	</div>
 
@@ -142,37 +154,35 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods">
-		<tr data-order="parse" id="_parse">
+		<tr data-order="writeStatus" id="_writeStatus">
 
 			<td class="attributes"><code>
-				 public static
-				array|string
+				 protected 
+				
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_parse">#</a>
-			<code><a href="source-class-Scaffolder.Support.PathParser.html#7-55" title="Go to source code">parse</a>( <span> <var>$path</var></span> )</code>
+			<a class="anchor" href="#_writeStatus">#</a>
+			<code><a href="source-class-Scaffolder.Commands.BaseCommand.html#10-28" title="Go to source code">writeStatus</a>( <span>string <var>$status</var></span>, <span>boolean <var>$webExecution</var></span> )</code>
 
 			<div class="description short">
-				<p>Parse a path.</p>
+				<p>Store status in cache or print.</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Parse a path.</p>
+				<p>Store status in cache or print.</p>
 
 
 					<h4>Parameters</h4>
 					<div class="list"><dl>
-						<dt><var>$path</var></dt>
+						<dt><var>$status</var></dt>
+						<dd></dd>
+						<dt><var>$webExecution</var></dt>
 						<dd></dd>
 					</dl></div>
 
-					<h4>Returns</h4>
-					<div class="list">
-						array|string
-					</div>
 
 
 
@@ -197,7 +207,7 @@
 	</div>
 
 	<div id="footer">
-		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+		Scaffolder v2.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
 	</div>
 </div>
 <script src="resources/combined.js"></script>

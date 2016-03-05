@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="robots" content="noindex">
 
-	<title>File Scaffolder/Compilers/AbstractCoreCompiler.php | Scaffolder v1.0.0</title>
+	<title>File Scaffolder/Compilers/AbstractCoreCompiler.php | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -15,7 +15,7 @@
 	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+				<a href="index.html" class="navbar-brand">Scaffolder v2.0.0</a>
 			</div>
 			<div class="collapse navbar-collapse">
 
@@ -64,8 +64,14 @@
 							<ul>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Core.html">
-							Core						</a>
+							Core<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
+							Api						</a>
 							</li>
+								</ul></li>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
@@ -73,16 +79,6 @@
 					<li>
 						<a href="namespace-Scaffolder.Compilers.View.html">
 							View						</a>
-							</li>
-								</ul></li>
-					<li>
-						<a href="namespace-Scaffolder.Support.html">
-							Support<span></span>
-						</a>
-							<ul>
-					<li>
-						<a href="namespace-Scaffolder.Support.Contracts.html">
-							Contracts						</a>
 							</li>
 								</ul></li></ul></li>
 			</ul>
@@ -92,12 +88,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Scaffolder.AbstractThemeServiceProvider.html">Scaffolder\AbstractThemeServiceProvider</a></li>
+				<li><a href="class-Scaffolder.Commands.BaseCommand.html">Scaffolder\Commands\BaseCommand</a></li>
 				<li><a href="class-Scaffolder.Commands.ClearCacheCommand.html">Scaffolder\Commands\ClearCacheCommand</a></li>
 				<li><a href="class-Scaffolder.Commands.GeneratorCommand.html">Scaffolder\Commands\GeneratorCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.InitializeApiCommand.html">Scaffolder\Commands\InitializeApiCommand</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractCompiler.html">Scaffolder\Compilers\AbstractCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractCoreCompiler.html">Scaffolder\Compilers\AbstractCoreCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractViewCompiler.html">Scaffolder\Compilers\AbstractViewCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html">Scaffolder\Compilers\Core\Api\ApiControllerCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiModelCompiler.html">Scaffolder\Compilers\Core\Api\ApiModelCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiRouteCompiler.html">Scaffolder\Compilers\Core\Api\ApiRouteCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html">Scaffolder\Compilers\Core\ControllerCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.MigrationCompiler.html">Scaffolder\Compilers\Core\MigrationCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.ModelCompiler.html">Scaffolder\Compilers\Core\ModelCompiler</a></li>
@@ -112,24 +112,9 @@
 				<li><a href="class-Scaffolder.Compilers.View.LoginViewCompiler.html">Scaffolder\Compilers\View\LoginViewCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.View.WelcomeViewCompiler.html">Scaffolder\Compilers\View\WelcomeViewCompiler</a></li>
 				<li><a href="class-Scaffolder.ScaffolderServiceProvider.html">Scaffolder\ScaffolderServiceProvider</a></li>
-				<li><a href="class-Scaffolder.Support.Directory.html">Scaffolder\Support\Directory</a></li>
-				<li><a href="class-Scaffolder.Support.FileToCompile.html">Scaffolder\Support\FileToCompile</a></li>
-				<li><a href="class-Scaffolder.Support.Json.html">Scaffolder\Support\Json</a></li>
-				<li><a href="class-Scaffolder.Support.PathParser.html">Scaffolder\Support\PathParser</a></li>
 			</ul>
 
-			<h3>Interfaces</h3>
-			<ul>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderExtensionInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeLayoutsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeViewsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface</a></li>
-			</ul>
 
-			<h3>Traits</h3>
-			<ul>
-				<li><a href="class-Scaffolder.Support.InputTypeResolverTrait.html">Scaffolder\Support\InputTypeResolverTrait</a></li>
-			</ul>
 
 
 
@@ -168,10 +153,10 @@
 	</div>
 
 	<div id="footer">
-		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+		Scaffolder v2.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?0f935f96ab26411152ef4df0f439a0c169de3f12"></script>
+<script src="elementlist.js?e58b64f6579871a78a142902649cf1bca5ed574c"></script>
 </body>
 </html>

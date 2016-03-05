@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Scaffolder\Commands\GeneratorCommand | Scaffolder v1.0.0</title>
+	<title>Class Scaffolder\Commands\GeneratorCommand | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -14,7 +14,7 @@
 	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+				<a href="index.html" class="navbar-brand">Scaffolder v2.0.0</a>
 			</div>
 			<div class="collapse navbar-collapse">
 
@@ -64,8 +64,14 @@
 							<ul>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Core.html">
-							Core						</a>
+							Core<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
+							Api						</a>
 							</li>
+								</ul></li>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
@@ -73,16 +79,6 @@
 					<li>
 						<a href="namespace-Scaffolder.Compilers.View.html">
 							View						</a>
-							</li>
-								</ul></li>
-					<li>
-						<a href="namespace-Scaffolder.Support.html">
-							Support<span></span>
-						</a>
-							<ul>
-					<li>
-						<a href="namespace-Scaffolder.Support.Contracts.html">
-							Contracts						</a>
 							</li>
 								</ul></li></ul></li>
 			</ul>
@@ -92,8 +88,10 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Scaffolder.Commands.BaseCommand.html">BaseCommand</a></li>
 				<li><a href="class-Scaffolder.Commands.ClearCacheCommand.html">ClearCacheCommand</a></li>
 				<li class="active"><a href="class-Scaffolder.Commands.GeneratorCommand.html">GeneratorCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.InitializeApiCommand.html">InitializeApiCommand</a></li>
 			</ul>
 
 
@@ -121,6 +119,13 @@ Illuminate\Console\Command
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
+			<a href="class-Scaffolder.Commands.BaseCommand.html"><span>Scaffolder\Commands\BaseCommand</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by">
 <b><span>Scaffolder\Commands\GeneratorCommand</span></b>			
 			
 			
@@ -140,7 +145,7 @@ Illuminate\Console\Command
 		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Commands.html">Commands</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-Scaffolder.Commands.GeneratorCommand.html#27-237" title="Go to source code">Scaffolder/Commands/GeneratorCommand.php</a>
+			<b>Located at</b> <a href="source-class-Scaffolder.Commands.GeneratorCommand.html#30-310" title="Go to source code">Scaffolder/Commands/GeneratorCommand.php</a>
 		<br>
 	</div>
 
@@ -160,7 +165,7 @@ Illuminate\Console\Command
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-Scaffolder.Commands.GeneratorCommand.html#71-98" title="Go to source code">__construct</a>( <span><code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeViewsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface</a></code> <var>$themeViews</var></span>, <span><code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeLayoutsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface</a></code> <var>$themeLayouts</var></span>, <span><code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface</a></code> <var>$themeExtension</var></span>, <span>array <var>$extensions</var></span> )</code>
+			<code><a href="source-class-Scaffolder.Commands.GeneratorCommand.html#74-101" title="Go to source code">__construct</a>( <span>Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface <var>$themeViews</var></span>, <span>Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface <var>$themeLayouts</var></span>, <span>Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface <var>$themeExtension</var></span>, <span>array <var>$extensions</var></span> )</code>
 
 			<div class="description short">
 				<p>Create a new generator command instance.</p>
@@ -204,7 +209,7 @@ Illuminate\Console\Command
 
 			<td class="name"><div>
 			<a class="anchor" href="#_handle">#</a>
-			<code><a href="source-class-Scaffolder.Commands.GeneratorCommand.html#100-236" title="Go to source code">handle</a>( )</code>
+			<code><a href="source-class-Scaffolder.Commands.GeneratorCommand.html#103-309" title="Go to source code">handle</a>( )</code>
 
 			<div class="description short">
 				<p>Execute the Command.</p>
@@ -225,6 +230,12 @@ Illuminate\Console\Command
 			</table>
 		</div>
 
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Scaffolder.Commands.BaseCommand.html#methods">Scaffolder\Commands\BaseCommand</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Scaffolder.Commands.BaseCommand.html#_writeStatus">writeStatus()</a></code>
+			</p>
+		</div>
 
 
 
@@ -245,7 +256,7 @@ Illuminate\Console\Command
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#29-33" title="Go to source code"><var>$signature</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#32-36" title="Go to source code"><var>$signature</var></a>
 
 				<div class="description short">
 					<p>Command signature.</p>
@@ -259,7 +270,7 @@ Illuminate\Console\Command
 			<td class="value">
 				<div>
 					<a href="#$signature" class="anchor">#</a>
-					<code><span class="php-quote">'scaffolder:generate'</span></code>
+					<code><span class="php-quote">'scaffolder:generate {--api} {--webExecution}'</span></code>
 				</div>
 			</td>
 		</tr>
@@ -270,7 +281,7 @@ Illuminate\Console\Command
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#35-39" title="Go to source code"><var>$description</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#38-42" title="Go to source code"><var>$description</var></a>
 
 				<div class="description short">
 					<p>Command description.</p>
@@ -295,7 +306,7 @@ Illuminate\Console\Command
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#41-45" title="Go to source code"><var>$stubsDirectory</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#44-48" title="Go to source code"><var>$stubsDirectory</var></a>
 
 				<div class="description short">
 					<p>Stubs directory.</p>
@@ -316,11 +327,11 @@ Illuminate\Console\Command
 		<tr data-order="themeViews" id="$themeViews">
 			<td class="attributes"><code>
 				protected  
-				<code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeViewsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface</a></code>
+				Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#47-51" title="Go to source code"><var>$themeViews</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#50-54" title="Go to source code"><var>$themeViews</var></a>
 
 				<div class="description short">
 					<p>Theme views implementation.</p>
@@ -341,11 +352,11 @@ Illuminate\Console\Command
 		<tr data-order="themeLayouts" id="$themeLayouts">
 			<td class="attributes"><code>
 				protected  
-				<code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeLayoutsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface</a></code>
+				Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#53-57" title="Go to source code"><var>$themeLayouts</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#56-60" title="Go to source code"><var>$themeLayouts</var></a>
 
 				<div class="description short">
 					<p>Theme layouts implementation.</p>
@@ -366,11 +377,11 @@ Illuminate\Console\Command
 		<tr data-order="themeExtension" id="$themeExtension">
 			<td class="attributes"><code>
 				protected  
-				<code><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface</a></code>
+				Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#59-63" title="Go to source code"><var>$themeExtension</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#62-66" title="Go to source code"><var>$themeExtension</var></a>
 
 				<div class="description short">
 					<p>Theme extension implementation.</p>
@@ -391,11 +402,11 @@ Illuminate\Console\Command
 		<tr data-order="extensions" id="$extensions">
 			<td class="attributes"><code>
 				protected  
-				<code><a href="class-Scaffolder.Support.Contracts.ScaffolderExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderExtensionInterface</a>[]</code>
+				Scaffolder\Support\Contracts\ScaffolderExtensionInterface[]
 			</code></td>
 
 			<td class="name">
-					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#65-69" title="Go to source code"><var>$extensions</var></a>
+					<a href="source-class-Scaffolder.Commands.GeneratorCommand.html#68-72" title="Go to source code"><var>$extensions</var></a>
 
 				<div class="description short">
 					<p>Extension implementations.</p>
@@ -425,7 +436,7 @@ Illuminate\Console\Command
 	</div>
 
 	<div id="footer">
-		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+		Scaffolder v2.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
 	</div>
 </div>
 <script src="resources/combined.js"></script>

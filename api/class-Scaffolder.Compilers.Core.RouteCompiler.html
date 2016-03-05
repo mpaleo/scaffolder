@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Scaffolder\Compilers\Core\RouteCompiler | Scaffolder v1.0.0</title>
+	<title>Class Scaffolder\Compilers\Core\RouteCompiler | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -14,7 +14,7 @@
 	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+				<a href="index.html" class="navbar-brand">Scaffolder v2.0.0</a>
 			</div>
 			<div class="collapse navbar-collapse">
 
@@ -64,8 +64,14 @@
 							<ul>
 					<li class="active">
 						<a href="namespace-Scaffolder.Compilers.Core.html">
-							Core						</a>
+							Core<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
+							Api						</a>
 							</li>
+								</ul></li>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
@@ -73,16 +79,6 @@
 					<li>
 						<a href="namespace-Scaffolder.Compilers.View.html">
 							View						</a>
-							</li>
-								</ul></li>
-					<li>
-						<a href="namespace-Scaffolder.Support.html">
-							Support<span></span>
-						</a>
-							<ul>
-					<li>
-						<a href="namespace-Scaffolder.Support.Contracts.html">
-							Contracts						</a>
 							</li>
 								</ul></li></ul></li>
 			</ul>
@@ -138,6 +134,12 @@
 	</dl>
 
 
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-Scaffolder.Compilers.Core.Api.ApiRouteCompiler.html">Scaffolder\Compilers\Core\Api\ApiRouteCompiler</a></code>
+		</p>
+	</div>
 
 
 
@@ -163,7 +165,7 @@
 
 			<td class="attributes"><code>
 				 public 
-				mixed
+				string
 				
 				</code>
 			</td>
@@ -200,7 +202,7 @@
 
 					<h4>Returns</h4>
 					<div class="list">
-						mixed
+						string
 					</div>
 
 
@@ -213,7 +215,7 @@
 
 			<td class="attributes"><code>
 				 public 
-				mixed
+				string
 				
 				</code>
 			</td>
@@ -242,7 +244,7 @@
 
 					<h4>Returns</h4>
 					<div class="list">
-						mixed
+						string
 					</div>
 
 
@@ -262,7 +264,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_store">#</a>
-			<code><a href="source-class-Scaffolder.Compilers.Core.RouteCompiler.html#55-68" title="Go to source code">store</a>( <span> <var>$modelName</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$compiled</var></span>, <span><code><a href="class-Scaffolder.Support.FileToCompile.html">Scaffolder\Support\FileToCompile</a></code> <var>$fileToCompile</var></span> )</code>
+			<code><a href="source-class-Scaffolder.Compilers.Core.RouteCompiler.html#55-68" title="Go to source code">store</a>( <span> <var>$modelName</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$compiled</var></span>, <span>Scaffolder\Support\FileToCompile <var>$fileToCompile</var></span> )</code>
 
 			<div class="description short">
 				<p>Store the compiled stub.</p>
@@ -295,6 +297,82 @@
 			</div>
 			</div></td>
 		</tr>
+		<tr data-order="replaceResource" id="_replaceResource">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_replaceResource">#</a>
+			<code><a href="source-class-Scaffolder.Compilers.Core.RouteCompiler.html#70-83" title="Go to source code">replaceResource</a>( <span> <var>$modelName</var></span> )</code>
+
+			<div class="description short">
+				<p>Replace the resource.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Replace the resource.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$modelName</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="replaceRoutes" id="_replaceRoutes">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_replaceRoutes">#</a>
+			<code><a href="source-class-Scaffolder.Compilers.Core.RouteCompiler.html#85-97" title="Go to source code">replaceRoutes</a>( <span> <var>$compiledRoutes</var></span> )</code>
+
+			<div class="description short">
+				<p>Replace compiled routes.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Replace compiled routes.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$compiledRoutes</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<br>$this
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 			</table>
 		</div>
 
@@ -302,7 +380,8 @@
 	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Scaffolder.Compilers.AbstractCompiler.html#methods">Scaffolder\Compilers\AbstractCompiler</a></h3></div>
 			<p class="elementList">
 				<code><a href="class-Scaffolder.Compilers.AbstractCompiler.html#_replaceClassName">replaceClassName()</a></code>, 
-				<code><a href="class-Scaffolder.Compilers.AbstractCompiler.html#_replaceNamespace">replaceNamespace()</a></code>
+				<code><a href="class-Scaffolder.Compilers.AbstractCompiler.html#_replaceNamespace">replaceNamespace()</a></code>, 
+				<code><a href="class-Scaffolder.Compilers.AbstractCompiler.html#_tab">tab()</a></code>
 			</p>
 		</div>
 
@@ -344,7 +423,7 @@
 	</div>
 
 	<div id="footer">
-		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+		Scaffolder v2.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
 	</div>
 </div>
 <script src="resources/combined.js"></script>

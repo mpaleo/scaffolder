@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="robots" content="noindex">
 
-	<title>File Scaffolder/Compilers/Core/ModelCompiler.php | Scaffolder v1.0.0</title>
+	<title>File Scaffolder/Compilers/Core/ModelCompiler.php | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -15,7 +15,7 @@
 	<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">Scaffolder v1.0.0</a>
+				<a href="index.html" class="navbar-brand">Scaffolder v2.0.0</a>
 			</div>
 			<div class="collapse navbar-collapse">
 
@@ -64,8 +64,14 @@
 							<ul>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Core.html">
-							Core						</a>
+							Core<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
+							Api						</a>
 							</li>
+								</ul></li>
 					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
@@ -73,16 +79,6 @@
 					<li>
 						<a href="namespace-Scaffolder.Compilers.View.html">
 							View						</a>
-							</li>
-								</ul></li>
-					<li>
-						<a href="namespace-Scaffolder.Support.html">
-							Support<span></span>
-						</a>
-							<ul>
-					<li>
-						<a href="namespace-Scaffolder.Support.Contracts.html">
-							Contracts						</a>
 							</li>
 								</ul></li></ul></li>
 			</ul>
@@ -92,12 +88,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Scaffolder.AbstractThemeServiceProvider.html">Scaffolder\AbstractThemeServiceProvider</a></li>
+				<li><a href="class-Scaffolder.Commands.BaseCommand.html">Scaffolder\Commands\BaseCommand</a></li>
 				<li><a href="class-Scaffolder.Commands.ClearCacheCommand.html">Scaffolder\Commands\ClearCacheCommand</a></li>
 				<li><a href="class-Scaffolder.Commands.GeneratorCommand.html">Scaffolder\Commands\GeneratorCommand</a></li>
+				<li><a href="class-Scaffolder.Commands.InitializeApiCommand.html">Scaffolder\Commands\InitializeApiCommand</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractCompiler.html">Scaffolder\Compilers\AbstractCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractCoreCompiler.html">Scaffolder\Compilers\AbstractCoreCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.AbstractViewCompiler.html">Scaffolder\Compilers\AbstractViewCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html">Scaffolder\Compilers\Core\Api\ApiControllerCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiModelCompiler.html">Scaffolder\Compilers\Core\Api\ApiModelCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiRouteCompiler.html">Scaffolder\Compilers\Core\Api\ApiRouteCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html">Scaffolder\Compilers\Core\ControllerCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.MigrationCompiler.html">Scaffolder\Compilers\Core\MigrationCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.Core.ModelCompiler.html">Scaffolder\Compilers\Core\ModelCompiler</a></li>
@@ -112,24 +112,9 @@
 				<li><a href="class-Scaffolder.Compilers.View.LoginViewCompiler.html">Scaffolder\Compilers\View\LoginViewCompiler</a></li>
 				<li><a href="class-Scaffolder.Compilers.View.WelcomeViewCompiler.html">Scaffolder\Compilers\View\WelcomeViewCompiler</a></li>
 				<li><a href="class-Scaffolder.ScaffolderServiceProvider.html">Scaffolder\ScaffolderServiceProvider</a></li>
-				<li><a href="class-Scaffolder.Support.Directory.html">Scaffolder\Support\Directory</a></li>
-				<li><a href="class-Scaffolder.Support.FileToCompile.html">Scaffolder\Support\FileToCompile</a></li>
-				<li><a href="class-Scaffolder.Support.Json.html">Scaffolder\Support\Json</a></li>
-				<li><a href="class-Scaffolder.Support.PathParser.html">Scaffolder\Support\PathParser</a></li>
 			</ul>
 
-			<h3>Interfaces</h3>
-			<ul>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderExtensionInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeExtensionInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeLayoutsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeLayoutsInterface</a></li>
-				<li><a href="class-Scaffolder.Support.Contracts.ScaffolderThemeViewsInterface.html">Scaffolder\Support\Contracts\ScaffolderThemeViewsInterface</a></li>
-			</ul>
 
-			<h3>Traits</h3>
-			<ul>
-				<li><a href="class-Scaffolder.Support.InputTypeResolverTrait.html">Scaffolder\Support\InputTypeResolverTrait</a></li>
-			</ul>
 
 
 
@@ -241,7 +226,7 @@
 </span></span><span id="98" class="l"><a href="#98"> 98 </a><span class="php-comment">     *
 </span></span><span id="99" class="l"><a href="#99"> 99 </a><span class="php-comment">     * @return $this
 </span></span><span id="100" class="l"><a href="#100">100 </a><span class="php-comment">     */</span>
-</span><span id="101" class="l"><a href="#101">101 </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> addFillable(<span class="php-var">$modelData</span>)
+</span><span id="101" class="l"><a href="#101">101 </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> addFillable(<span class="php-var">$modelData</span>)
 </span><span id="102" class="l"><a href="#102">102 </a>    {
 </span><span id="103" class="l"><a href="#103">103 </a>        <span class="php-var">$fields</span> = <span class="php-quote">''</span>;
 </span><span id="104" class="l"><a href="#104">104 </a>        <span class="php-var">$firstIteration</span> = <span class="php-keyword1">true</span>;
@@ -255,7 +240,7 @@
 </span><span id="112" class="l"><a href="#112">112 </a>            }
 </span><span id="113" class="l"><a href="#113">113 </a>            <span class="php-keyword1">else</span>
 </span><span id="114" class="l"><a href="#114">114 </a>            {
-</span><span id="115" class="l"><a href="#115">115 </a>                <span class="php-var">$fields</span> .= <span class="php-keyword2">sprintf</span>(<span class="php-quote">&quot;\t\t'%s',&quot;</span> . PHP_EOL, <span class="php-var">$field</span>-&gt;name);
+</span><span id="115" class="l"><a href="#115">115 </a>                <span class="php-var">$fields</span> .= <span class="php-keyword2">sprintf</span>(<span class="php-var">$this</span>-&gt;tab(<span class="php-num">2</span>) . <span class="php-quote">&quot;'%s',&quot;</span> . PHP_EOL, <span class="php-var">$field</span>-&gt;name);
 </span><span id="116" class="l"><a href="#116">116 </a>            }
 </span><span id="117" class="l"><a href="#117">117 </a>        }
 </span><span id="118" class="l"><a href="#118">118 </a>
@@ -272,7 +257,7 @@
 </span></span><span id="129" class="l"><a href="#129">129 </a><span class="php-comment">     *
 </span></span><span id="130" class="l"><a href="#130">130 </a><span class="php-comment">     * @return $this
 </span></span><span id="131" class="l"><a href="#131">131 </a><span class="php-comment">     */</span>
-</span><span id="132" class="l"><a href="#132">132 </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> replaceTableName(stdClass <span class="php-var">$scaffolderConfig</span>, <span class="php-var">$modelName</span>)
+</span><span id="132" class="l"><a href="#132">132 </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> replaceTableName(stdClass <span class="php-var">$scaffolderConfig</span>, <span class="php-var">$modelName</span>)
 </span><span id="133" class="l"><a href="#133">133 </a>    {
 </span><span id="134" class="l"><a href="#134">134 </a>        <span class="php-var">$tableName</span> = <span class="php-keyword1">isset</span>(<span class="php-var">$scaffolderConfig</span>-&gt;tableName) &amp;&amp; !<span class="php-keyword1">empty</span>(<span class="php-var">$scaffolderConfig</span>-&gt;tableName) ? <span class="php-var">$scaffolderConfig</span>-&gt;tableName : <span class="php-var">$modelName</span> . <span class="php-quote">'s'</span>;
 </span><span id="135" class="l"><a href="#135">135 </a>
@@ -288,7 +273,7 @@
 </span></span><span id="145" class="l"><a href="#145">145 </a><span class="php-comment">     *
 </span></span><span id="146" class="l"><a href="#146">146 </a><span class="php-comment">     * @return $this
 </span></span><span id="147" class="l"><a href="#147">147 </a><span class="php-comment">     */</span>
-</span><span id="148" class="l"><a href="#148">148 </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> setPrimaryKey(<span class="php-var">$modelData</span>)
+</span><span id="148" class="l"><a href="#148">148 </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> setPrimaryKey(<span class="php-var">$modelData</span>)
 </span><span id="149" class="l"><a href="#149">149 </a>    {
 </span><span id="150" class="l"><a href="#150">150 </a>        <span class="php-var">$primaryKey</span> = <span class="php-quote">'// Using default primary key'</span> . PHP_EOL;
 </span><span id="151" class="l"><a href="#151">151 </a>
@@ -310,10 +295,10 @@
 	</div>
 
 	<div id="footer">
-		Scaffolder v1.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+		Scaffolder v2.0.0 API documentation generated by <a href="http://apigen.org">ApiGen</a>
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?0f935f96ab26411152ef4df0f439a0c169de3f12"></script>
+<script src="elementlist.js?e58b64f6579871a78a142902649cf1bca5ed574c"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Scaffolder\Compilers\Layout\CreateLayoutCompiler | Scaffolder v2.0.0</title>
+	<title>Class Scaffolder\Compilers\Core\Api\ApiControllerCompiler | Scaffolder v2.0.0</title>
 
 <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">
 	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
@@ -28,7 +28,7 @@
 
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="namespace-Scaffolder.Compilers.Layout.html" title="Summary of Scaffolder\Compilers\Layout"><span>Namespace</span></a>
+						<a href="namespace-Scaffolder.Compilers.Core.Api.html" title="Summary of Scaffolder\Compilers\Core\Api"><span>Namespace</span></a>
 					</li>
 					<li class="active">
 <a>Class</a>					</li>
@@ -62,17 +62,17 @@
 							Compilers<span></span>
 						</a>
 							<ul>
-					<li>
+					<li class="active">
 						<a href="namespace-Scaffolder.Compilers.Core.html">
 							Core<span></span>
 						</a>
 							<ul>
-					<li>
+					<li class="active">
 						<a href="namespace-Scaffolder.Compilers.Core.Api.html">
 							Api						</a>
 							</li>
 								</ul></li>
-					<li class="active">
+					<li>
 						<a href="namespace-Scaffolder.Compilers.Layout.html">
 							Layout						</a>
 							</li>
@@ -88,9 +88,9 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Scaffolder.Compilers.Layout.CreateLayoutCompiler.html">CreateLayoutCompiler</a></li>
-				<li><a href="class-Scaffolder.Compilers.Layout.EditLayoutCompiler.html">EditLayoutCompiler</a></li>
-				<li><a href="class-Scaffolder.Compilers.Layout.PageLayoutCompiler.html">PageLayoutCompiler</a></li>
+				<li class="active"><a href="class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html">ApiControllerCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiModelCompiler.html">ApiModelCompiler</a></li>
+				<li><a href="class-Scaffolder.Compilers.Core.Api.ApiRouteCompiler.html">ApiRouteCompiler</a></li>
 			</ul>
 
 
@@ -106,7 +106,7 @@
 <div id="right">
 	<div id="rightInner">
 <div id="content" class="class">
-	<h1>Class CreateLayoutCompiler</h1>
+	<h1>Class ApiControllerCompiler</h1>
 
 
 
@@ -119,14 +119,21 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-			<a href="class-Scaffolder.Compilers.AbstractViewCompiler.html"><span>Scaffolder\Compilers\AbstractViewCompiler</span></a>
+			<a href="class-Scaffolder.Compilers.AbstractCoreCompiler.html"><span>Scaffolder\Compilers\AbstractCoreCompiler</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>Scaffolder\Compilers\Layout\CreateLayoutCompiler</span></b>			
+			<a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html"><span>Scaffolder\Compilers\Core\ControllerCompiler</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:90px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Scaffolder\Compilers\Core\Api\ApiControllerCompiler</span></b>			
 			
 			
 		</dd>
@@ -142,10 +149,10 @@
 	<div class="alert alert-info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Compilers.html">Compilers</a>\<a href="namespace-Scaffolder.Compilers.Layout.html">Layout</a><br>
+		<b>Namespace:</b> <a href="namespace-Scaffolder.html">Scaffolder</a>\<a href="namespace-Scaffolder.Compilers.html">Compilers</a>\<a href="namespace-Scaffolder.Compilers.Core.html">Core</a>\<a href="namespace-Scaffolder.Compilers.Core.Api.html">Api</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-Scaffolder.Compilers.Layout.CreateLayoutCompiler.html#12-53" title="Go to source code">Scaffolder/Compilers/Layout/CreateLayoutCompiler.php</a>
+			<b>Located at</b> <a href="source-class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html#10-69" title="Go to source code">Scaffolder/Compilers/Core/Api/ApiControllerCompiler.php</a>
 		<br>
 	</div>
 
@@ -165,14 +172,14 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_compile">#</a>
-			<code><a href="source-class-Scaffolder.Compilers.Layout.CreateLayoutCompiler.html#14-33" title="Go to source code">compile</a>( <span> <var>$stub</var></span>, <span> <var>$modelName</var></span>, <span> <var>$modelData</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$hash</var></span>, <span>Scaffolder\Support\Contracts\ScaffolderThemeExtensionInterface <var>$themeExtension</var></span>, <span>array <var>$extensions</var></span>, <span>null <var>$extra</var> = <span class="php-keyword1">null</span></span> )</code>
+			<code><a href="source-class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html#12-40" title="Go to source code">compile</a>( <span> <var>$stub</var></span>, <span> <var>$modelName</var></span>, <span> <var>$modelData</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$hash</var></span>, <span>array <var>$extensions</var></span>, <span>null <var>$extra</var> = <span class="php-keyword1">null</span></span> )</code>
 
 			<div class="description short">
-				<p>Compiles the create layout.</p>
+				<p>Compiles a controller.</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Compiles the create layout.</p>
+				<p>Compiles a controller.</p>
 
 
 					<h4>Parameters</h4>
@@ -187,8 +194,6 @@
 						<dd></dd>
 						<dt><var>$hash</var></dt>
 						<dd></dd>
-						<dt><var>$themeExtension</var></dt>
-						<dd></dd>
 						<dt><var>$extensions</var></dt>
 						<dd></dd>
 						<dt><var>$extra</var></dt>
@@ -202,6 +207,8 @@
 
 
 
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html#_compile">Scaffolder\Compilers\Core\ControllerCompiler::compile</a></code></div>
 
 			</div>
 			</div></td>
@@ -217,7 +224,7 @@
 
 			<td class="name"><div>
 			<a class="anchor" href="#_store">#</a>
-			<code><a href="source-class-Scaffolder.Compilers.Layout.CreateLayoutCompiler.html#35-52" title="Go to source code">store</a>( <span> <var>$modelName</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$compiled</var></span>, <span>Scaffolder\Support\FileToCompile <var>$fileToCompile</var></span> )</code>
+			<code><a href="source-class-Scaffolder.Compilers.Core.Api.ApiControllerCompiler.html#42-68" title="Go to source code">store</a>( <span> <var>$modelName</var></span>, <span>stdClass <var>$scaffolderConfig</var></span>, <span> <var>$compiled</var></span>, <span>Scaffolder\Support\FileToCompile <var>$fileToCompile</var></span> )</code>
 
 			<div class="description short">
 				<p>Store the compiled stub.</p>
@@ -246,6 +253,8 @@
 
 
 
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html#_store">Scaffolder\Compilers\Core\ControllerCompiler::store</a></code></div>
 
 			</div>
 			</div></td>
@@ -254,9 +263,9 @@
 		</div>
 
 		<div class="panel panel-default">
-	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Scaffolder.Compilers.AbstractViewCompiler.html#methods">Scaffolder\Compilers\AbstractViewCompiler</a></h3></div>
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html#methods">Scaffolder\Compilers\Core\ControllerCompiler</a></h3></div>
 			<p class="elementList">
-				<code><a href="class-Scaffolder.Compilers.AbstractViewCompiler.html#_replaceBreadcrumb">replaceBreadcrumb()</a></code>
+				<code><a href="class-Scaffolder.Compilers.Core.ControllerCompiler.html#_setValidations">setValidations()</a></code>
 			</p>
 		</div>
 		<div class="panel panel-default">
