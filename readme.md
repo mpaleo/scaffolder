@@ -84,6 +84,7 @@ For instance, when you update the package, you should clear the cache files stor
 All you need to do, is go to your `http://{crazyhost}/scaffolder/generator` and fill some inputs :)
 
 ##### Next steps
+- Run migrations `./artisan migrate`
 - [Wiki](https://github.com/mpaleo/scaffolder/wiki)
 - [API Docs](http://mpaleo.github.io/scaffolder/api)
 
