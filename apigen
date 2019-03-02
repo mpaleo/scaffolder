@@ -11,10 +11,10 @@ apigen generate -s $SOURCE -d $DESTINATION --title "Scaffolder v$VERSION" --temp
 
 if [ "$OUTPUT" == "test" ]
 then
-    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="api-override.css">' $DESTINATION/*.html
+    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/3/paper/bootstrap.min.css"> <link rel="stylesheet" href="api-override.css">' $DESTINATION/*.html
     cp $DESTINATION/../stylesheets/api-override.css $DESTINATION
 else
-    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">' $DESTINATION/*.html
+    sed -i '/bootstrap.min.css/c\<link rel="stylesheet" href="https://bootswatch.com/3/paper/bootstrap.min.css"> <link rel="stylesheet" href="/scaffolder/stylesheets/api-override.css">' $DESTINATION/*.html
 fi
 
 # Changes
